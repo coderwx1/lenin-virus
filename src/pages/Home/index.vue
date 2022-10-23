@@ -26,7 +26,6 @@
         </ul>
       </section>
 
-      <div style="height: 2000px"></div>
     </div>
 
     <!-- <div class="footer">
@@ -49,17 +48,15 @@ import { useRouter } from "vue-router";
 import { getData } from "../getData";
 const router = useRouter();
 const scrollTopVal = ref(0);
-const { newsData } = getData();
 const homeNodeRef = ref(null);
+const { newsData } = getData();
 
 const getNewsInfo = (id) => {
   window.localStorage.setItem("id", JSON.stringify(id));
   router.push({ path: `/news_info/${id}` });
 };
 // 滚动时，保存最新的scrollTop值
-onMounted(() => {
-  homeNodeRef.value.addEventListener("scroll", (e) => (scrollTopVal.value = e.target.scrollTop));
-});
+onMounted(() => homeNodeRef.value.addEventListener("scroll", (e) => (scrollTopVal.value = e.target.scrollTop)));
 // 缓冲组件激活时触发这个钩子
 onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
 </script>
@@ -87,7 +84,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     .header {
       background: #fff;
       .title {
-        padding: 18px 0;
+        padding: 18px 10px;
         text-align: center;
         font-size: 16px;
         color: red;

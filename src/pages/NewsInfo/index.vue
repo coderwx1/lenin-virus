@@ -79,8 +79,23 @@ onActivated(() => (id.value = window.localStorage.getItem("id")));
       ul {
         li {
           list-style: none;
+
           img {
             width: 100%;
+          }
+          img[lazy="loaded"] {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-name: fadeIn;
+          }
+
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
           }
         }
       }
