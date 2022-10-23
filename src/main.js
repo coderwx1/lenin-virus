@@ -12,9 +12,12 @@ import {
 const app = createApp(App)
 
 const loadimage = require('@/assets/loading.jpg')
+const errorimage = require('@/assets/404.jpg')
+
 
 app.use(Lazyload, {
-    loading: loadimage
+    loading: loadimage,
+    error: errorimage
 })
 app.use(router)
 
