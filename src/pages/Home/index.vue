@@ -1,5 +1,5 @@
 <template>
-  <div class="home" ref="scrollRef">
+  <div class="home" ref="homeRef">
     <div class="home-content">
       <div class="header">
         <h1 class="title">记录中国在新冠疫情中的社会百态，民间百象</h1>
@@ -45,18 +45,14 @@
 
 <script setup>
 import { getNews } from "@/api";
-import { ref } from "vue";
-// onMounted
-import { useRouter, onBeforeRouteLeave } from "vue-router";
+import { ref, onMounted, onActivated, onDeactivated } from "vue";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const data = ref();
-const scrollRef = ref(null);
-let routeiId = 0;
-
-onBeforeRouteLeave(() => {
-  window.localStorage.setItem("id", JSON.stringify(routeiId));
-});
+const homeRef = ref(null);
+let routeId = 0;
+let scrollTopVal = ref(0);
 getNews().then(
   (val) => {
     console.log(val);
@@ -68,25 +64,46 @@ getNews().then(
 );
 
 const getNewsInfo = (id) => {
-  routeiId = id;
+  routeId = id;
   router.push({ path: `/news_info/${id}` });
 };
 
-// onMounted(() => {
-//   scrollRef.value.addEventListener("scroll", function (e) {
-//     console.log(22);
-//     // >= 58 ? (showHeaderBgc.value = true) : (showHeaderBgc.value = false);
-//     console.log(e.target.scrollTop);
-//     window.localStorage.setItem("scrollTop", JSON.stringify(e.target.scrollTop));
-//   });
-// });
+// 监听滚动
+onMounted(() => {
+  homeRef.value.addEventListener("scroll", function (e) {
+    scrollTopVal.value = e.target.scrollTop;
+  });
+});
+onActivated(() => {
+  homeRef.value.scrollTop = scrollTopVal.value;
+});
+
+onDeactivated(() => {
+  console.log(666);
+  window.localStorage.setItem("id", JSON.stringify(routeId));
+});
 </script>
 <style lang="less" scoped>
 .home {
   width: 100%;
-  background-color: rgb(237, 241, 243);
+  height: 100vh;
+  overflow-y: scroll;
+  //   chrome去除滚动条样式
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  //   兼容火狐
+  &.scw {
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+  }
+
+  //   兼容IE10+
+  &.msscw {
+    -ms-overflow-style: none;
+  }
   .home-content {
-    background-color: rgb(237, 241, 243);
     .header {
       background: #fff;
       .title {

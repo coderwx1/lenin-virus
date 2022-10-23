@@ -1,12 +1,12 @@
 <template>
   <div class="app-container">
-    <!-- <router-view /> -->
     <router-view v-slot="{ Component, route }">
-      <keep-alive>
-        <transition :name="route.meta.transition">
+      <!-- 过渡组件需要放在keepAlive组件外层，不然缓冲组件的生命周期不执行 -->
+      <transition :name="route.meta.transition">
+        <KeepAlive>
           <component :is="Component" />
-        </transition>
-      </keep-alive>
+        </KeepAlive>
+      </transition>
     </router-view>
   </div>
 </template>
@@ -24,23 +24,21 @@
   transition: 0.5s ease;
 }
 
-.homeList-enter-from {
+.newsInfo-enter-from {
   transform: translateX(100%);
 }
 
-.homeList-enter-to {
+.newsInfo-enter-to {
   transform: translateX(0);
 }
 
-.homeList-enter-active {
+.newsInfo-enter-active {
   transition: 0.5s ease;
 }
 
 .app-container {
   width: 100%;
-  height: 100%;
   overflow: hidden;
-  background-color: rgb(237, 241, 243);
 }
 </style>
 >

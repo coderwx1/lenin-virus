@@ -21,11 +21,7 @@
         <div class="article-content">
           <ul>
             <li v-for="userObj in item.content" :key="userObj.imgUrls[0]">
-              <img
-                v-lazy="imgUrl"
-                v-for="(imgUrl, i) in userObj.imgUrls"
-                :key="i"
-              />
+              <img v-lazy="imgUrl" v-for="(imgUrl, i) in userObj.imgUrls" :key="i" />
             </li>
           </ul>
         </div>
@@ -36,25 +32,20 @@
 
 <script setup>
 import { getNews } from "@/api";
-import { ref, computed } from "vue";
-import { useRoute } from "vue-router";
-const route = useRoute();
+import { ref, computed, onActivated } from "vue";
+// import { useRoute } from "vue-router";
+// const route = useRoute();
 const newsList = ref([]);
-const id = route.params.id;
-// let id = window.localStorage.getItem("id");
-
-getNews().then(
-  (val) => {
-    newsList.value = val.news;
-  },
-  (err) => {
-    console.log(err);
-  }
-);
-const filterNewsDataById = computed(() =>
-  newsList.value.filter((item) => item.id == id)
-);
-
+// const id = route.params.id;
+let id;
+onActivated(() => {
+  id = window.localStorage.getItem("id");
+  getNews().then(
+    (val) => (newsList.value = val.news),
+    (err) => console.log(err)
+  );
+});
+const filterNewsDataById = computed(() => newsList.value.filter((item) => item.id == id));
 // 当参数更改时获取用户信息
 </script>
 
@@ -63,8 +54,6 @@ const filterNewsDataById = computed(() =>
   width: 100%;
   main {
     padding: 0 20px;
-    background-color: rgb(237, 241, 243);
-
     header {
       h1 {
         font-weight: 500;
