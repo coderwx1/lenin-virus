@@ -81,11 +81,9 @@ onActivated(() => (id.value = window.localStorage.getItem("id")));
 
           img {
             width: 100%;
-            //   animation-duration: 1s;
-            // animation-fill-mode: both;
-            // animation-name: fadeIn;
+         
           }
-          img[src="https:"] {
+          img[lazy="loaded"] {
             animation-duration: 1s;
             animation-fill-mode: both;
             animation-name: fadeIn;
