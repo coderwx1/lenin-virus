@@ -35,9 +35,8 @@ import { ref, onActivated } from "vue";
 import { getData } from "../getData";
 
 /*
-缓冲路由组件时，路由参数只有初始访问路由时可以获取到,想要随时获取，
-可以把 useRoute()放在onActivated函数中。
-这里只用第二种方式(响应式ref)来获取数据
+如果需要根据路由参数来动态获取数据，但是当该路由组件又是缓冲组件时，那么路由参数只有初始访问路由时可以获取到,想要随时获取，可以把 useRoute()放在onActivated函数中。
+还有一种方式是把路由参数保存在本地存储，跳转路由后读取出来，然后通过传递响应式ref来连接响应性
  */
 let id = ref(0);
 let { filterNewsDataById } = getData(id);
