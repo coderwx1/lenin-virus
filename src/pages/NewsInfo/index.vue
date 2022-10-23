@@ -31,22 +31,17 @@
 </template>
 
 <script setup>
-import { getNews } from "@/api";
-import { ref, computed, onActivated } from "vue";
-// import { useRoute } from "vue-router";
-// const route = useRoute();
-const newsList = ref([]);
-// const id = route.params.id;
-let id;
-onActivated(() => {
-  id = window.localStorage.getItem("id");
-  getNews().then(
-    (val) => (newsList.value = val.news),
-    (err) => console.log(err)
-  );
-});
-const filterNewsDataById = computed(() => newsList.value.filter((item) => item.id == id));
-// 当参数更改时获取用户信息
+import { ref, onActivated } from "vue";
+import { getData } from "../getData";
+
+/*
+缓冲路由组件时，路由参数只有初始访问路由时可以获取到,想要随时获取，
+可以把 useRoute()放在onActivated函数中。
+这里只用第二种方式(响应式ref)来获取数据
+ */
+let id = ref(0);
+let { filterNewsDataById } = getData(id);
+onActivated(() => (id.value = window.localStorage.getItem("id")));
 </script>
 
 <style lang="less" scoped>

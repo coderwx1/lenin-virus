@@ -1,5 +1,5 @@
 <template>
-  <div class="home" ref="homeRef">
+  <div class="home" ref="homeNodeRef">
     <div class="home-content">
       <div class="header">
         <h1 class="title">记录中国在新冠疫情中的社会百态，民间百象</h1>
@@ -7,7 +7,7 @@
       <div class="bgc"></div>
       <section class="news-wrapper">
         <ul>
-          <li v-for="item in data" :key="item.id" @click="getNewsInfo(item.id)">
+          <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
             <div>
               <article>
                 <section class="s-left">
@@ -44,44 +44,24 @@
 </template>
 
 <script setup>
-import { getNews } from "@/api";
-import { ref, onMounted, onActivated, onDeactivated } from "vue";
+import { ref, onMounted, onActivated } from "vue";
 import { useRouter } from "vue-router";
-
+import { getData } from "../getData";
 const router = useRouter();
-const data = ref();
-const homeRef = ref(null);
-let routeId = 0;
-let scrollTopVal = ref(0);
-getNews().then(
-  (val) => {
-    console.log(val);
-    data.value = val.news;
-  },
-  (err) => {
-    console.log(err.message);
-  }
-);
+const scrollTopVal = ref(0);
+const { newsData } = getData();
+const homeNodeRef = ref(null);
 
 const getNewsInfo = (id) => {
-  routeId = id;
+  window.localStorage.setItem("id", JSON.stringify(id));
   router.push({ path: `/news_info/${id}` });
 };
-
-// 监听滚动
+// 滚动时，保存最新的scrollTop值
 onMounted(() => {
-  homeRef.value.addEventListener("scroll", function (e) {
-    scrollTopVal.value = e.target.scrollTop;
-  });
+  homeNodeRef.value.addEventListener("scroll", (e) => (scrollTopVal.value = e.target.scrollTop));
 });
-onActivated(() => {
-  homeRef.value.scrollTop = scrollTopVal.value;
-});
-
-onDeactivated(() => {
-  console.log(666);
-  window.localStorage.setItem("id", JSON.stringify(routeId));
-});
+// 缓冲组件激活时触发这个钩子
+onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
 </script>
 <style lang="less" scoped>
 .home {

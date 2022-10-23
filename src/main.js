@@ -10,7 +10,7 @@ import {
 } from 'vant';
 const app = createApp(App)
 
-const loadimage = require('@/assets/loading.png')
+const loadimage = require('@/assets/loading.jpg')
 
 app.use(Lazyload, {
     loading: loadimage
