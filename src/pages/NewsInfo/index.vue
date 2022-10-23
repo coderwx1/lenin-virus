@@ -21,7 +21,9 @@
         <div class="article-content">
           <ul>
             <li v-for="userObj in item.content" :key="userObj.imgUrls[0]">
-              <img v-lazy="imgUrl" v-for="(imgUrl, i) in userObj.imgUrls" :key="i" />
+              <lazy-component>
+                <img v-lazy="imgUrl" v-for="imgUrl in userObj.imgUrls"  />
+              </lazy-component>
             </li>
           </ul>
         </div>
@@ -81,7 +83,6 @@ onActivated(() => (id.value = window.localStorage.getItem("id")));
 
           img {
             width: 100%;
-         
           }
           img[lazy="loaded"] {
             animation-duration: 1s;

@@ -14,9 +14,11 @@ const loadimage = require('@/pages/NewsInfo/loading.jpg')
 const errorimage = require('@/assets/404.jpg')
 
 app.use(Lazyload, {
+     lazyComponent: true,
     loading: loadimage,
     error: errorimage
 });
+
 app.use(router)
 
 
