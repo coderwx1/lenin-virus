@@ -21,9 +21,11 @@
         <div class="article-content">
           <ul>
             <li v-for="userObj in item.content" :key="userObj.imgUrls[0]">
-              <template v-for="imgUrl in userObj.imgUrls" :key="imgUrl">
-                <img v-lazy="imgUrl" />
-              </template>
+              <lazy-component>
+               
+                  <img v-lazy="imgUrl" v-for="imgUrl in userObj.imgUrls" :key="imgUrl" />
+               
+              </lazy-component>
             </li>
           </ul>
         </div>
