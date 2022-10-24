@@ -32,7 +32,7 @@
       </template>
     </main>
     <div class="loading" style="width: 100%; height: 100vh;" v-else>
-      <van-loading type="spinner" color="#1989fa" />
+      <van-loading type="spinner" color="#1989fa" vertical>加载中...</van-loading>
     </div>
   </div>
 </template>
