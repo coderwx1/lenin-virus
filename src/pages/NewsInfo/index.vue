@@ -1,5 +1,5 @@
 <template>
-  <div class="news-info">
+  <div class="news-info" v-if="filterNewsDataById">
     <main>
       <template v-for="item in filterNewsDataById" :key="item.id">
         <header>
@@ -32,6 +32,8 @@
       </template>
     </main>
   </div>
+
+  <div style="color: red" v-else>test</div>
 </template>
 
 <script setup>
