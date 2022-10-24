@@ -14,7 +14,6 @@ export function getData(id) {
         try {
             const data = await getNews()
             newsData.value = data.news
-            // alert(data)
         } catch (error) {
             console.log(error);
         }

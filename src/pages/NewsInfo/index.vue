@@ -21,7 +21,6 @@
         <div class="article-content">
           <ul>
             <li v-for="userObj in item.content" :key="userObj.imgUrls[0]">
-              <!-- 单用v-lazy指令 项目打包后图片不会懒加载 -->
               <lazy-component>
                 <template v-for="imgUrl in userObj.imgUrls" :key="imgUrl">
                   <img v-lazy="imgUrl" />
