@@ -31,8 +31,8 @@
         </div>
       </template>
     </main>
-    <div style="color: red; width: 100%; height: 100vh; background-color: red" v-else>
-      <van-loading type="spinner" />
+    <div class="loading" style="width: 100%; height: 100vh;" v-else>
+      <van-loading type="spinner" color="#1989fa" />
     </div>
   </div>
 </template>
@@ -110,6 +110,12 @@ onActivated(() => {
         }
       }
     }
+  }
+
+  .loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>
