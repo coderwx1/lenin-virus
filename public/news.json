@@ -177,6 +177,70 @@
                 }
             },
             "source": "Admin"
+        },
+        {
+            "id": 8,
+            "title": "西安一男子连续被三家医院拒诊，最终猝死",
+            "small_img": "https://i.postimg.cc/t1PW6N0M/QQ-20221024160536.jpg",
+            "date": "2022/10/24",
+            "lastUpdateTime": "2022/10/24",
+            "content": {
+                "other_user": {
+                    "imgUrls": [
+                        "https://i.postimg.cc/YSD3JddM/QQ-20221024160536.jpg"
+                    ]
+                }
+            },
+            "source": "Admin"
+        },
+        {
+            "id": 9,
+            "title": "西安一孕妇因核酸无法入院，在医院门口等2小时后8个月婴儿流产",
+            "small_img": "https://i.postimg.cc/pyhScpNY/snipaste20221024-161457.png",
+            "date": "2022/10/24",
+            "lastUpdateTime": "2022/10/24",
+            "content": {
+                "other_user": {
+                    "imgUrls": [
+                        "https://i.postimg.cc/W4F4m7fh/snipaste20221024-161321.png",
+                        "https://i.postimg.cc/4yJZ0vwv/snipaste20221024-161359.png",
+                        "https://i.postimg.cc/Vv1L8PsC/snipaste20221024-161411.png",
+                        "https://i.postimg.cc/hPDPZn5F/snipaste20221024-161422.png",
+                        "https://i.postimg.cc/5tLVNKRq/snipaste20221024-161447.png",
+                        "https://i.postimg.cc/G3q12yqN/snipaste20221024-161457.png",
+                        "https://i.postimg.cc/8PcgrzYC/snipaste20221024-161505.png",
+                        "https://i.postimg.cc/k5bnRgBS/snipaste20221024-161514.png",
+                        "https://i.postimg.cc/Qxww9k56/snipaste20221024-161523.png",
+                        "https://i.postimg.cc/k4yPW692/snipaste20221024-161551.png",
+                        "https://i.postimg.cc/mDp8xByd/snipaste20221024-161601.png",
+                        "https://i.postimg.cc/NjvbvNRw/snipaste20221024-161615.png",
+                        "https://i.postimg.cc/tTBmXhpN/snipaste20221024-161624.png",
+                        "https://i.postimg.cc/3wKBddLS/snipaste20221024-161633.png",
+                        "https://i.postimg.cc/L6Y0pY7j/snipaste20221024-161641.png",
+                        "https://i.postimg.cc/ydxyy2C0/snipaste20221024-161651.png",
+                        "https://i.postimg.cc/130BmpKV/snipaste20221024-161706.png",
+                        "https://i.postimg.cc/YSbxgMZp/snipaste20221024-161722.png"
+                    ]
+                }
+            },
+            "source": "Admin"
+        },
+        {
+            "id": 10,
+            "title": "西安网友称父亲心绞痛被拒诊耽误后离世",
+            "small_img": "https://i.postimg.cc/qNBBXKmQ/snipaste20221024-163318.png",
+            "date": "2022/10/24",
+            "lastUpdateTime": "2022/10/24",
+            "content": {
+                "other_user": {
+                    "imgUrls": [
+                        "https://i.postimg.cc/g28wpq39/snipaste20221024-163318.png",
+                        "https://i.postimg.cc/YSxhGrXb/snipaste20221024-163336.png",
+                        "https://i.postimg.cc/wTStnbyc/snipaste20221024-163352.png"
+                    ]
+                }
+            },
+            "source": "Admin"
         }
     ]
 }
