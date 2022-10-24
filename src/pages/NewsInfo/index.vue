@@ -1,5 +1,5 @@
 <template>
-  <div class="news-info" v-if="filterNewsDataById">
+  <div class="news-info" v-if="!filterNewsDataById.length">
     <main>
       <template v-for="item in filterNewsDataById" :key="item.id">
         <header>
@@ -33,7 +33,7 @@
     </main>
   </div>
 
-  <div style="color: red;height: 100vh;background-color: red;" v-else>test</div>
+  <div style="color: red;width:100%;height: 100vh;background-color: red;" v-else>test</div>
 </template>
 
 <script setup>
