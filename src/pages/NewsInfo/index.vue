@@ -1,5 +1,5 @@
 <template>
-  <div class="news-info" v-if="!filterNewsDataById.length">
+  <div class="news-info" v-if="filterNewsDataById.length">
     <main>
       <template v-for="item in filterNewsDataById" :key="item.id">
         <header>
