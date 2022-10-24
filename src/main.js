@@ -4,11 +4,12 @@ import {
 import App from './App.vue'
 import router from './router'
 import 'lib-flexible/flexible'
-// import 'animate.css';
+import 'animate.css';
 
 import {
     Loading,
     Lazyload,
+    Button
 } from 'vant';
 
 const app = createApp(App)
@@ -21,6 +22,10 @@ app.use(Lazyload, {
     error: errorimage
 });
 app.use(Loading);
+app.use(Button);
+
+
+
 app.use(router)
 
 

@@ -2,9 +2,14 @@
   <div class="home" ref="homeNodeRef">
     <div class="home-content">
       <header>
-        <h1 class="title">记录中国在新冠疫情中的社会百态，民间百象</h1>
+        <img src="../../assets/header-bg.png" alt="" />
+        <h1 class="title">光明日报</h1>
       </header>
-      <div class="bgc"></div>
+      <div class="bgc">
+        <div class="left-bg"></div>
+        <div class="right-bg"></div>
+      </div>
+
       <section class="news-wrapper">
         <ul>
           <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
@@ -18,13 +23,17 @@
                   </div>
                 </section>
                 <section class="s-right">
-                  <img v-lazy="item.small_img"  />
+                  <img v-lazy="item.small_img" />
                 </section>
               </article>
             </div>
           </li>
         </ul>
       </section>
+
+      <!-- <div class="tab">
+        <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
+      </div> -->
     </div>
 
     <!-- <div class="footer">
@@ -81,10 +90,18 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   }
   .home-content {
     header {
-      text-align: center;
-      background: rgb(5, 5, 5);
+      position: relative;
+      height: 54px;
+      // text-align: center;
+      img {
+        width: 100%;
+        height: 100%;
+      }
       .title {
-        padding: 16px 10px;
+        position: absolute;
+        top: 0;
+        padding: 16px 22px 0 22px;
+
         font-size: 16px;
         color: rgb(253, 253, 253);
         font-weight: 600;
@@ -93,10 +110,29 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     .bgc {
       width: 100%;
       height: 60px;
-      background: linear-gradient(rgb(10, 10, 10), hsla(0, 0%, 100%, 0));
+      margin-top: -2px;
+      display: flex;
+      .left-bg {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(rgb(253, 55, 38), hsla(0, 0%, 100%, 0));
+      }
+      .right-bg {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(rgb(255, 98, 54), hsla(0, 0%, 100%, 0));
+      }
+    }
+    .tab {
+      background-color: rgb(255, 255, 255);
+      position: fixed;
+      width: 375px;
+      bottom: 0;
     }
     .news-wrapper {
-      margin-top: -60px;
+      margin-top: -58px;
+      position: relative;
+      z-index: 5;
 
       ul {
         list-style: none;
@@ -106,6 +142,10 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
           margin-top: 0;
           border-radius: 10px;
           background-color: rgb(255, 255, 255);
+          &.first {
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+          }
           div {
             article {
               display: flex;
