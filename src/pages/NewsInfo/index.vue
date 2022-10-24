@@ -33,7 +33,7 @@
     </main>
   </div>
 
-  <div style="color: red" v-else>test</div>
+  <div style="color: red;height: 100vh;background-color: red;" v-else>test</div>
 </template>
 
 <script setup>
