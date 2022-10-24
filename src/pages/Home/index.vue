@@ -1,9 +1,9 @@
 <template>
   <div class="home" ref="homeNodeRef">
     <div class="home-content">
-      <div class="header">
+      <header>
         <h1 class="title">记录中国在新冠疫情中的社会百态，民间百象</h1>
-      </div>
+      </header>
       <div class="bgc"></div>
       <section class="news-wrapper">
         <ul>
@@ -25,7 +25,6 @@
           </li>
         </ul>
       </section>
-
     </div>
 
     <!-- <div class="footer">
@@ -81,7 +80,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     -ms-overflow-style: none;
   }
   .home-content {
-    .header {
+    header {
       background: #fff;
       .title {
         padding: 18px 10px;
@@ -114,7 +113,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
                 display: flex;
                 flex-wrap: wrap;
                 flex: 1;
-                font-size: 16px;
+                font-size: 15px;
                 color: black;
                 h4 {
                   display: -webkit-box;
