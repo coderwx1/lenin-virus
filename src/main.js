@@ -6,6 +6,9 @@ import router from './router'
 import 'lib-flexible/flexible'
 // import 'animate.css';
 import {
+    Loading
+} from 'vant';
+import {
     Lazyload,
 } from 'vant';
 
@@ -18,7 +21,7 @@ app.use(Lazyload, {
     loading: loadimage,
     error: errorimage
 });
-
+app.use(Loading);
 app.use(router)
 
 

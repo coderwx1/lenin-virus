@@ -31,7 +31,9 @@
         </div>
       </template>
     </main>
-    <div style="color: red; width: 100%; height: 100vh; background-color: red" v-else>test</div>
+    <div style="color: red; width: 100%; height: 100vh; background-color: red" v-else>
+      <van-loading type="spinner" />
+    </div>
   </div>
 </template>
 
