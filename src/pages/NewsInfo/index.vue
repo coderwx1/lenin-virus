@@ -48,7 +48,7 @@ let { filterNewsDataById } = getData(id);
 
 onActivated(() => {
   id.value = window.localStorage.getItem("id");
-  alert(window.localStorage.getItem("id"))
+  // alert(window.localStorage.getItem("id"))
 });
 </script>
 
