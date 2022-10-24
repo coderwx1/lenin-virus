@@ -21,7 +21,7 @@
         <div class="article-content">
           <ul>
             <li v-for="userObj in item.content" :key="userObj.imgUrls[0]">
-              <!-- 单用v-lazy指令项目打包后，图片不会懒加载 -->
+              <!-- 单用v-lazy指令 项目打包后图片不会懒加载 -->
               <lazy-component>
                 <template v-for="imgUrl in userObj.imgUrls" :key="imgUrl">
                   <img v-lazy="imgUrl" />
@@ -45,7 +45,11 @@ import { getData } from "../getData";
  */
 let id = ref(0);
 let { filterNewsDataById } = getData(id);
-onActivated(() => (id.value = window.localStorage.getItem("id")));
+
+onActivated(() => {
+  id.value = window.localStorage.getItem("id");
+  alert(window.localStorage.getItem("id"))
+});
 </script>
 
 <style lang="less" scoped>
