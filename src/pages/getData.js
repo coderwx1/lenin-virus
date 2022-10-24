@@ -15,7 +15,7 @@ export function getData(id) {
             const data = await getNews()
             newsData.value = data.news
         } catch (error) {
-          alert("加载错误，请刷新重试" + error.message)
+            alert("加载错误，请刷新重试" + error.message)
         }
     }
     getNewsData()

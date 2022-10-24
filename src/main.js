@@ -5,10 +5,9 @@ import App from './App.vue'
 import router from './router'
 import 'lib-flexible/flexible'
 // import 'animate.css';
+
 import {
-    Loading
-} from 'vant';
-import {
+    Loading,
     Lazyload,
 } from 'vant';
 
@@ -17,7 +16,7 @@ const loadimage = require('@/pages/NewsInfo/loading.jpg')
 const errorimage = require('@/assets/404.jpg')
 
 app.use(Lazyload, {
-     lazyComponent: true,
+    lazyComponent: true,
     loading: loadimage,
     error: errorimage
 });

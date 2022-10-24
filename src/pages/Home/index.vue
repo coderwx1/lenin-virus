@@ -18,7 +18,7 @@
                   </div>
                 </section>
                 <section class="s-right">
-                  <img :src="item.small_img" alt="" />
+                  <img v-lazy="item.small_img"  />
                 </section>
               </article>
             </div>
@@ -81,10 +81,10 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   }
   .home-content {
     header {
+      text-align: center;
       background: rgb(5, 5, 5);
       .title {
-        padding: 18px 10px;
-        text-align: center;
+        padding: 16px 10px;
         font-size: 16px;
         color: rgb(253, 253, 253);
         font-weight: 600;
