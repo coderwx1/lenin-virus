@@ -81,19 +81,19 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   }
   .home-content {
     header {
-      background: #fff;
+      background: rgb(5, 5, 5);
       .title {
         padding: 18px 10px;
         text-align: center;
         font-size: 16px;
-        color: red;
+        color: rgb(253, 253, 253);
         font-weight: 600;
       }
     }
     .bgc {
       width: 100%;
       height: 60px;
-      background: linear-gradient(#fff, hsla(0, 0%, 100%, 0));
+      background: linear-gradient(rgb(10, 10, 10), hsla(0, 0%, 100%, 0));
     }
     .news-wrapper {
       margin-top: -60px;
