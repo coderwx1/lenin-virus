@@ -1,6 +1,6 @@
 <template>
-  <div class="news-info" v-if="filterNewsDataById.length">
-    <main>
+  <div class="news-info">
+    <main v-if="filterNewsDataById.length">
       <template v-for="item in filterNewsDataById" :key="item.id">
         <header>
           <h1 class="article-title">
@@ -31,9 +31,8 @@
         </div>
       </template>
     </main>
+    <div style="color: red; width: 100%; height: 100vh; background-color: red" v-else>test</div>
   </div>
-
-  <div style="color: red;width:100%;height: 100vh;background-color: red;" v-else>test</div>
 </template>
 
 <script setup>
