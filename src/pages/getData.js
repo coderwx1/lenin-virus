@@ -10,15 +10,15 @@ import {
 export function getData(id) {
     console.log(id);
     let newsData = ref([]);
-    async function getNewsData() {
+
+    (async () => {
         try {
             const data = await getNews()
             newsData.value = data.news
         } catch (error) {
             alert("加载错误，请刷新重试" + error.message)
         }
-    }
-    getNewsData()
+    })();
     const filterNewsDataById = computed(() => newsData.value.filter((item) => item.id == id.value));
     return {
         newsData,

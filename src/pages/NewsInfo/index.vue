@@ -60,9 +60,9 @@ onActivated(() => {
   width: 100%;
   main {
     padding: 0 20px;
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-    animation-name: enterAnimate;
+    // animation-duration: 0.5s;
+    // animation-fill-mode: both;
+    // animation-name: enterAnimate;
     header {
       h1 {
         font-weight: 500;
@@ -121,14 +121,14 @@ onActivated(() => {
       }
     }
 
-    @keyframes enterAnimate {
-      from {
-        transform: translateX(100%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
+    // @keyframes enterAnimate {
+    //   from {
+    //     transform: translateX(100%);
+    //   }
+    //   to {
+    //     transform: translateX(0);
+    //   }
+    // }
   }
 
   .loading {

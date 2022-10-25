@@ -157,18 +157,19 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       margin-top: -54px;
       position: relative;
       z-index: 5;
-      animation-duration: 0.5s;
-      animation-fill-mode: both;
-      animation-name: enterAnimate;
+      
+      // animation-duration: 0.5s;
+      // animation-fill-mode: both;
+      // animation-name: enterAnimate;
 
-      @keyframes enterAnimate {
-        from {
-          transform: translateX(-100%);
-        }
-        to {
-          transform: translateX(0);
-        }
-      }
+      // @keyframes enterAnimate {
+      //   from {
+      //     transform: translateX(-100%);
+      //   }
+      //   to {
+      //     transform: translateX(0);
+      //   }
+      // }
       ul {
         list-style: none;
         li {
