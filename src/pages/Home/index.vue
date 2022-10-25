@@ -100,7 +100,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     img {
       width: 100%;
       height: 100%;
-      background: rgb(254, 100, 86);
+      background: rgb(252, 53, 36);
     }
     .title {
       position: absolute;
