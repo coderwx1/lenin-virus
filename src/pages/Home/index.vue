@@ -9,6 +9,7 @@
       <div class="clear-fix"></div>
       <div class="bgc">
         <div class="left-bg"></div>
+        <div class="md"></div>
         <div class="right-bg"></div>
       </div>
 
@@ -131,16 +132,22 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       margin-top: -1px;
 
       .left-bg {
-        width: 50%;
+        width: 5%;
         height: 54px;
         background: linear-gradient(rgb(253, 55, 38), hsla(0, 0%, 100%, 0));
       }
+      .md {
+        flex: auto;
+        height: 54px;
+        background: linear-gradient(rgb(254, 100, 86), hsla(0, 0%, 100%, 0));
+          //  background-color: rgb(237, 241, 243);
+
+      }
       .right-bg {
-        width: 50%;
+        width: 5%;
         height: 54px;
         background: linear-gradient(rgb(255, 98, 54), hsla(0, 0%, 100%, 0));
       }
-
     }
     .tab {
       background-color: rgb(255, 255, 255);
