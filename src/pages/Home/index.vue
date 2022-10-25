@@ -3,7 +3,8 @@
     <div class="home-content">
       <header>
         <img src="../../assets/header-bg.png" alt="" />
-        <h1 class="title">光明日报</h1>
+        <h1 class="title">始终坚持一切为了人民</h1>
+        <p>——习近平</p>
       </header>
       <div class="clear-fix"></div>
       <div class="bgc">
@@ -110,6 +111,13 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
         font-size: 16px;
         color: rgb(253, 253, 253);
         font-weight: 600;
+      }
+      p{
+        position: absolute;
+        right: 22px;
+        color: white;
+        bottom: 0;
+        font-size: 14px;
       }
     }
     .clear-fix {
