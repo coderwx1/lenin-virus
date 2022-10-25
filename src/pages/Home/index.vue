@@ -2,7 +2,7 @@
   <div class="home" ref="homeNodeRef">
     <div class="home-content">
       <header>
-        <img src='https://i.postimg.cc/fLy21sW8/header-bg.png' />
+        <img src="https://i.postimg.cc/fLy21sW8/header-bg.png" />
         <h1 class="title">始终坚持一切为了人民</h1>
         <p>——习近平</p>
       </header>
@@ -13,7 +13,7 @@
         <div class="right-bg"></div>
       </div>
 
-      <!-- 这个标签用到了过渡，页面一加载不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断有没有数据） -->
+      <!-- 这个标签用到了过渡，页面初始加载时，不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断只有数据请求到了才会渲染这个标签） -->
       <section class="news-wrapper" v-if="newsData.length">
         <ul>
           <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
