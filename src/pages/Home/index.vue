@@ -13,6 +13,7 @@
         <div class="right-bg"></div>
       </div>
 
+      <!-- 这个标签用到了过渡，页面一加载不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断有没有数据） -->
       <section class="news-wrapper" v-if="newsData.length">
         <ul>
           <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
