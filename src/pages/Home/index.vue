@@ -1,6 +1,5 @@
 <template>
   <div class="home" ref="homeNodeRef">
-    <template v-if="newsData.length">
       <div class="home-content">
         <header>
           <img src="../../assets/header-bg.png" alt="" />
@@ -39,7 +38,6 @@
         <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
       </div> -->
       </div>
-    </template>
     <!-- <div class="footer">
       <h5 class="title">我为什么要写这个网站?</h5>
       <p class="des">
@@ -94,6 +92,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     -ms-overflow-style: none;
   }
   header {
+    width: 375px;
     height: 54px;
     position: fixed;
     z-index: 6;
