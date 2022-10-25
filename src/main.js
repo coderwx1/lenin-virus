@@ -13,13 +13,13 @@ import {
 } from 'vant';
 
 const app = createApp(App)
-const loadimage = require('@/pages/NewsInfo/loading.jpg')
-const errorimage = require('@/assets/404.jpg')
+// const loadimage = require('@/pages/NewsInfo/loading.jpg')
+// const errorimage = require('@/assets/404.jpg')
 
 app.use(Lazyload, {
     lazyComponent: true,
-    loading: loadimage,
-    error: errorimage
+    // loading: loadimage,
+    // error: errorimage
 });
 app.use(Loading);
 app.use(Button);
