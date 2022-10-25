@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component}">
       <!-- 过渡组件需要放在keepAlive组件外层，不然缓冲组件的生命周期不执行 -->
         <KeepAlive>
           <component :is="Component" />
