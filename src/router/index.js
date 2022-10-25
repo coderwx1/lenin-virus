@@ -9,7 +9,7 @@ import {
 
 //如果要用路由过渡组件，需要用这种引入方式，同时在APP组件设置overflow：hidden
 const Home = () => import('../pages/Home')
-const NewsInfo = () => import('../pages/NewsInfo') 
+const NewsInfo = () => import('../pages/NewsInfo')
 
 const routes = [{
     path: '/',

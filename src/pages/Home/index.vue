@@ -1,52 +1,50 @@
 <template>
   <div class="home" ref="homeNodeRef">
-    <div class="home-content">
-      <header>
-        <img src="../../assets/header-bg.png" alt="" />
-        <h1 class="title">始终坚持一切为了人民</h1>
-        <p>——习近平</p>
-      </header>
-      <div class="clear-fix"></div>
-      <div class="bgc">
-        <div class="left-bg"></div>
-        <div class="md"></div>
-        <div class="right-bg"></div>
-      </div>
+    <template v-if="newsData.length">
+      <div class="home-content">
+        <header>
+          <img src="../../assets/header-bg.png" alt="" />
+          <h1 class="title">始终坚持一切为了人民</h1>
+          <p>——习近平</p>
+        </header>
+        <div class="clear-fix"></div>
+        <div class="bgc">
+          <div class="left-bg"></div>
+          <div class="md"></div>
+          <div class="right-bg"></div>
+        </div>
 
-      <section class="news-wrapper">
-        <ul>
-          <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
-            <div>
-              <article>
-                <section class="s-left">
-                  <h4>{{ item.title }}</h4>
-                  <div class="s-info">
-                    <span class="s-source"> {{ item.source }} </span>
-                    <span class="add-time">{{ "添加时间:" + item.date }}</span>
-                  </div>
-                </section>
-                <section class="s-right">
-                  <img v-lazy="item.small_img" />
-                </section>
-              </article>
-            </div>
-          </li>
-        </ul>
-      </section>
+        <section class="news-wrapper">
+          <ul>
+            <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
+              <div>
+                <article>
+                  <section class="s-left">
+                    <h4>{{ item.title }}</h4>
+                    <div class="s-info">
+                      <span class="s-source"> {{ item.source }} </span>
+                      <span class="add-time">{{ "添加时间:" + item.date }}</span>
+                    </div>
+                  </section>
+                  <section class="s-right">
+                    <img v-lazy="item.small_img" />
+                  </section>
+                </article>
+              </div>
+            </li>
+          </ul>
+        </section>
 
-      <!-- <div class="tab">
+        <!-- <div class="tab">
         <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
       </div> -->
-    </div>
-
+      </div>
+    </template>
     <!-- <div class="footer">
       <h5 class="title">我为什么要写这个网站?</h5>
       <p class="des">
-        今天2022年10月20日，我在网上看到一则网民热议的微博话题，
-        不过后来我看到这则话题在微博被删除了。<br />
-        话题讨论的大体内容是:<br />
-        汝州城因疫情防控，被隔离的一个16岁小女生隔离期间高烧40度，最终因送医迟缓，被活活烧死的内容。<br />
-        我看到心里很难受，很心疼，小女生不是死于医疗条件不发达，也不是死于交通条件不便利，更不是死于通讯障碍，而是死于过度防疫。<br />
+        最近我在看到一则网民热议的微博话题，不过后来我看到这则话题在微博被删除了，话题讨论的大体内容是: 因疫情防控，被隔离的一个16岁小女生高烧40度，因送医迟缓抢救无效去世的内容。<br />
+        我看到心里很难受，很心疼，小女生不是死于医疗条件不发达，也不是死于交通条件不便利，更不是死于通讯障碍，而是死于过度防疫。
         政府说疫情防控是为了民众的生命安全，结果因为疫情防控而置其他病患的生命于不顾？这到底为的是什么？！
       </p>
     </div> -->
@@ -140,8 +138,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
         flex: auto;
         height: 54px;
         background: linear-gradient(rgb(254, 100, 86), hsla(0, 0%, 100%, 0));
-          //  background-color: rgb(237, 241, 243);
-
+        //  background-color: rgb(237, 241, 243);
       }
       .right-bg {
         width: 5%;
@@ -162,9 +159,6 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       animation-duration: 0.5s;
       animation-fill-mode: both;
       animation-name: enterAnimate;
-      &.active {
-        margin-top: 0;
-      }
 
       @keyframes enterAnimate {
         from {

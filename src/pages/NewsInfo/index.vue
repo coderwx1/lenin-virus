@@ -31,6 +31,7 @@
         </div>
       </template>
     </main>
+    <!-- 因为添加了路由过渡，当访问该路由，页面数据没有请求回来时，会给人一种感觉路由过渡没有生效 加个loding可以看到路由过渡 -->
     <div class="loading" style="width: 100%; height: 100vh" v-else>
       <van-loading type="spinner" color="#1989fa" vertical>加载中...</van-loading>
     </div>
@@ -59,6 +60,9 @@ onActivated(() => {
   width: 100%;
   main {
     padding: 0 20px;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-name: enterAnimate;
     header {
       h1 {
         font-weight: 500;
@@ -108,6 +112,15 @@ onActivated(() => {
             }
           }
         }
+      }
+    }
+
+    @keyframes enterAnimate {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
       }
     }
   }
