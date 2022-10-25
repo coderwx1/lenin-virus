@@ -98,18 +98,9 @@ onActivated(() => {
             width: 100%;
           }
           img[lazy="loading"] {
-            background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
-            background-size: 400% 100%;
-            animation: loading-animate 1s ease infinite;
-          }
-          @keyframes loading-animate {
-            0% {
-              background-position: 100% 50%;
-            }
-
-            to {
-              background-position: 0 50%;
-            }
+            background: url(./loading.jpg);
+            background-size: 100%;
+            background-position: center;
           }
 
           img[lazy="loaded"] {

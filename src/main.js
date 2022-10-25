@@ -14,12 +14,12 @@ import {
 
 const app = createApp(App)
 // const loadimage = require('@/pages/NewsInfo/loading.jpg')
-// const errorimage = require('@/assets/404.jpg')
+const errorimage = require('@/assets/404.jpg')
 
 app.use(Lazyload, {
     lazyComponent: true,
     // loading: loadimage,
-    // error: errorimage
+    error: errorimage
 });
 app.use(Loading);
 app.use(Button);
