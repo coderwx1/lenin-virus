@@ -5,6 +5,7 @@
         <img src="../../assets/header-bg.png" alt="" />
         <h1 class="title">光明日报</h1>
       </header>
+      <div class="clear-fix"></div>
       <div class="bgc">
         <div class="left-bg"></div>
         <div class="right-bg"></div>
@@ -64,7 +65,11 @@ const getNewsInfo = (id) => {
   router.push({ path: `/news_info/${id}` });
 };
 // 滚动时，保存最新的scrollTop值
-onMounted(() => homeNodeRef.value.addEventListener("scroll", (e) => (scrollTopVal.value = e.target.scrollTop)));
+onMounted(() => {
+  homeNodeRef.value.addEventListener("scroll", (e) => {
+    scrollTopVal.value = e.target.scrollTop;
+  });
+});
 // 缓冲组件激活时触发这个钩子
 onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
 </script>
@@ -90,9 +95,10 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   }
   .home-content {
     header {
-      position: relative;
       height: 54px;
-      // text-align: center;
+      position: fixed;
+      z-index: 6;
+
       img {
         width: 100%;
         height: 100%;
@@ -101,25 +107,28 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
         position: absolute;
         top: 0;
         padding: 16px 22px 0 22px;
-
         font-size: 16px;
         color: rgb(253, 253, 253);
         font-weight: 600;
       }
     }
+    .clear-fix {
+      width: 100%;
+      height: 54px;
+    }
     .bgc {
       width: 100%;
-      height: 60px;
-      margin-top: -2px;
+      height: 54px;
       display: flex;
+      margin-top: -1px;
       .left-bg {
         width: 50%;
-        height: 100%;
+        height: 54px;
         background: linear-gradient(rgb(253, 55, 38), hsla(0, 0%, 100%, 0));
       }
       .right-bg {
         width: 50%;
-        height: 100%;
+        height: 54px;
         background: linear-gradient(rgb(255, 98, 54), hsla(0, 0%, 100%, 0));
       }
     }
@@ -130,10 +139,12 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       bottom: 0;
     }
     .news-wrapper {
-      margin-top: -58px;
+      margin-top: -54px;
       position: relative;
       z-index: 5;
-
+      &.active {
+        margin-top: 0;
+      }
       ul {
         list-style: none;
         li {
