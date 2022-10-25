@@ -2,7 +2,7 @@
   <div class="home" ref="homeNodeRef">
     <div class="home-content">
       <header>
-        <img src="../../assets/header-bg.png" alt="" />
+        <img v-lazy="'https://i.postimg.cc/fLy21sW8/header-bg.png'" />
         <h1 class="title">始终坚持一切为了人民</h1>
         <p>——习近平</p>
       </header>
@@ -13,7 +13,7 @@
         <div class="right-bg"></div>
       </div>
 
-      <section class="news-wrapper">
+      <section class="news-wrapper" v-if="newsData.length"> 
         <ul>
           <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
             <div>
@@ -100,7 +100,6 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     img {
       width: 100%;
       height: 100%;
-      background: rgb(252, 53, 36);
     }
     .title {
       position: absolute;
