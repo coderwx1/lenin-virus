@@ -94,32 +94,32 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   &.msscw {
     -ms-overflow-style: none;
   }
-  .home-content {
-    header {
-      height: 54px;
-      position: fixed;
-      z-index: 6;
+  header {
+    height: 54px;
+    position: fixed;
+    z-index: 6;
 
-      img {
-        width: 100%;
-        height: 100%;
-      }
-      .title {
-        position: absolute;
-        top: 0;
-        padding: 16px 22px 0 22px;
-        font-size: 16px;
-        color: rgb(253, 253, 253);
-        font-weight: 600;
-      }
-      p{
-        position: absolute;
-        right: 22px;
-        color: white;
-        bottom: 0;
-        font-size: 14px;
-      }
+    img {
+      width: 100%;
+      height: 100%;
     }
+    .title {
+      position: absolute;
+      top: 0;
+      padding: 16px 22px 0 22px;
+      font-size: 16px;
+      color: rgb(253, 253, 253);
+      font-weight: 600;
+    }
+    p {
+      position: absolute;
+      right: 22px;
+      color: white;
+      bottom: 0;
+      font-size: 14px;
+    }
+  }
+  .home-content {
     .clear-fix {
       width: 100%;
       height: 54px;
@@ -129,6 +129,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       height: 54px;
       display: flex;
       margin-top: -1px;
+
       .left-bg {
         width: 50%;
         height: 54px;
@@ -139,6 +140,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
         height: 54px;
         background: linear-gradient(rgb(255, 98, 54), hsla(0, 0%, 100%, 0));
       }
+
     }
     .tab {
       background-color: rgb(255, 255, 255);
@@ -150,8 +152,20 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       margin-top: -54px;
       position: relative;
       z-index: 5;
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+      animation-name: enterAnimate;
       &.active {
         margin-top: 0;
+      }
+
+      @keyframes enterAnimate {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
       }
       ul {
         list-style: none;

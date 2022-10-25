@@ -12,17 +12,17 @@
 </template>
 
 <style lang="less">
-.home-enter-from {
-  transform: translateX(-100%);
-}
+// .home-enter-from {
+//   transform: translateX(-100%);
+// }
 
-.home-enter-to {
-  transform: translateX(0);
-}
+// .home-enter-to {
+//   transform: translateX(0);
+// }
 
-.home-enter-active {
-  transition: 0.5s ease;
-}
+// .home-enter-active {
+//   transition: 10s ease;
+// }
 
 .newsInfo-enter-from {
   transform: translateX(100%);
