@@ -1,43 +1,43 @@
 <template>
   <div class="home" ref="homeNodeRef">
-      <div class="home-content">
-        <header>
-          <img src="../../assets/header-bg.png" alt="" />
-          <h1 class="title">始终坚持一切为了人民</h1>
-          <p>——习近平</p>
-        </header>
-        <div class="clear-fix"></div>
-        <div class="bgc">
-          <div class="left-bg"></div>
-          <div class="md"></div>
-          <div class="right-bg"></div>
-        </div>
+    <div class="home-content">
+      <header>
+        <img src="../../assets/header-bg.png" alt="" />
+        <h1 class="title">始终坚持一切为了人民</h1>
+        <p>——习近平</p>
+      </header>
+      <div class="clear-fix"></div>
+      <div class="bgc">
+        <div class="left-bg"></div>
+        <div class="md"></div>
+        <div class="right-bg"></div>
+      </div>
 
-        <section class="news-wrapper">
-          <ul>
-            <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
-              <div>
-                <article>
-                  <section class="s-left">
-                    <h4>{{ item.title }}</h4>
-                    <div class="s-info">
-                      <span class="s-source"> {{ item.source }} </span>
-                      <span class="add-time">{{ "添加时间:" + item.date }}</span>
-                    </div>
-                  </section>
-                  <section class="s-right">
-                    <img v-lazy="item.small_img" />
-                  </section>
-                </article>
-              </div>
-            </li>
-          </ul>
-        </section>
+      <section class="news-wrapper">
+        <ul>
+          <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
+            <div>
+              <article>
+                <section class="s-left">
+                  <h4>{{ item.title }}</h4>
+                  <div class="s-info">
+                    <span class="s-source"> {{ item.source }} </span>
+                    <span class="add-time">{{ "添加时间:" + item.date }}</span>
+                  </div>
+                </section>
+                <section class="s-right">
+                  <img v-lazy="item.small_img" />
+                </section>
+              </article>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-        <!-- <div class="tab">
+      <!-- <div class="tab">
         <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
       </div> -->
-      </div>
+    </div>
     <!-- <div class="footer">
       <h5 class="title">我为什么要写这个网站?</h5>
       <p class="des">
@@ -100,6 +100,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     img {
       width: 100%;
       height: 100%;
+      background: rgb(254, 100, 86);
     }
     .title {
       position: absolute;
