@@ -55,14 +55,7 @@
     </div>
     <div class="footer">
       <div class="footer-content">
-        <p>
-          献给那些<br />
-          不是死于医疗条件不发达<br />
-          也不是死于交通条件不便利 <br />
-          更不是死于通讯障碍<br />
-          而是死于过度防疫的人们！
-        </p>
-        <p>政府说疫情防控是为了民众的生命安全，结果因为疫情防控而置其他病患的生命于不顾，这到底为的是什么？！</p>
+        <p>献给那些死于过度防疫的<span>人们</span></p>
       </div>
     </div>
   </div>
@@ -310,15 +303,18 @@ const getNewsInfo = (id) => {
 
   .footer {
     width: 100%;
-    // height: 200px;
     padding: 20px;
-    background: #1b1e24;
+    background: #0e163c;
     text-align: center;
     .footer-content {
       line-height: 20px;
       p {
-        font-size: 13px;
-        color: #7e838e;
+        font-size: 16px;
+        color: #8f8f9f;
+         font-family: 'ZCOOL XiaoWei', serif;
+         span{
+          color: #fff;
+         }
       }
     }
   }
