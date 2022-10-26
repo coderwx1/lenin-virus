@@ -53,14 +53,11 @@
         <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
       </div> -->
     </div>
-    <!-- <div class="footer">
-      <h5 class="title">我为什么要写这个网站?</h5>
-      <p class="des">
-        最近我在看到一则网民热议的微博话题，不过后来我看到这则话题在微博被删除了，话题讨论的大体内容是: 因疫情防控，被隔离的一个16岁小女生高烧40度，因送医迟缓抢救无效去世的内容。<br />
-        我看到心里很难受，很心疼，小女生不是死于医疗条件不发达，也不是死于交通条件不便利，更不是死于通讯障碍，而是死于过度防疫。
-        政府说疫情防控是为了民众的生命安全，结果因为疫情防控而置其他病患的生命于不顾？这到底为的是什么？！
-      </p>
-    </div> -->
+    <div class="footer">
+      <p>献给那个16岁的女学生</p>
+      <p>献给那些不是死于医疗条件不发达，也不是死于交通条件不便利，更不是死于通讯障碍，而是死于过度防疫的人们！</p>
+      <p>政府说疫情防控是为了民众的生命安全，结果因为疫情防控而置其他病患的生命于不顾？这到底为的是什么？！</p>
+    </div>
   </div>
 </template>
 
@@ -305,12 +302,16 @@ const getNewsInfo = (id) => {
   }
 
   .footer {
-    .title {
-      color: red;
-    }
+    width: 100%;
+    // height: 200px;
+    padding: 20px;
+    background: #1b1e24;
+    text-align: center;
+    p {
+      font-size: 13px;
+      color: #7e838e;
+    line-height: 20px;
 
-    .des {
-      font-size: 16px;
     }
   }
 }
