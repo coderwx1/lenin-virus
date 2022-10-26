@@ -6,7 +6,6 @@
         <h1 class="title">始终坚持一切为了人民</h1>
         <p>——习近平</p>
       </header>
-      <div class="clear-fix"></div>
       <div class="bgc">
         <div class="left-bg"></div>
         <div class="md"></div>
@@ -34,7 +33,21 @@
           </li>
         </ul>
       </section>
+      <section class="fixIcon animate__animated animate__bounceInRight" :class="{ 'is-show': scrollTopVal >= 500 }">
+        <a href="javascript:" class="fixTop-ico" @click="backPosition(0)"></a>
+        <a href="javascript:" class="fixBottom-ico" @click="backPosition(1)"></a>
+      </section>
 
+      <!-- <div class="test">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li>底部</li>
+        </ul>
+      </div> -->
       <!-- <div class="tab">
         <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
       </div> -->
@@ -56,6 +69,7 @@ import { useRouter } from "vue-router";
 import { getData } from "../getData";
 const router = useRouter();
 const scrollTopVal = ref(0);
+
 const homeNodeRef = ref(null);
 const { newsData } = getData();
 
@@ -69,6 +83,22 @@ onMounted(() => {
     scrollTopVal.value = e.target.scrollTop;
   });
 });
+
+const backPosition = (position) => {
+  if (position == 0) {
+    scrollTopVal.value = 0;
+    homeNodeRef.value.scrollTo({
+      top: scrollTopVal.value,
+      behavior: "smooth",
+    });
+  } else {
+    scrollTopVal.value = homeNodeRef.value.scrollHeight - homeNodeRef.value.clientHeight;
+    homeNodeRef.value.scrollTo({
+      top: scrollTopVal.value,
+      behavior: "smooth",
+    });
+  }
+};
 // 缓冲组件激活时触发这个钩子
 onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
 </script>
@@ -92,12 +122,43 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   &.msscw {
     -ms-overflow-style: none;
   }
+
+  .fixIcon {
+    position: fixed;
+    bottom: 3.466667rem;
+    right: 0.346667rem;
+    z-index: 999;
+    display: none;
+
+    &.is-show {
+      display: block;
+    }
+    .fixTop-ico {
+      display: block;
+      width: 36px;
+      height: 36px;
+      background: url(https://x2.ifengimg.com/fe/shank/channel/top.e15cad56.png) no-repeat 0 0/36px 36px;
+      margin-bottom: 6px;
+    }
+    .fixBottom-ico {
+      .fixTop-ico();
+      background: url(https://x2.ifengimg.com/fe/shank/channel/bottom.93b36099.png) no-repeat 0 0/36px 36px;
+      margin-bottom: 0;
+    }
+  }
+  // .test {
+  //   ul {
+  //     li {
+  //       width: 375px;
+  //       height: 500px;
+  //     }
+  //   }
+  // }
+
   header {
     width: 375px;
     height: 54px;
-    position: fixed;
-    z-index: 6;
-
+    position: relative;
     img {
       width: 100%;
       height: 100%;
@@ -120,10 +181,6 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
     }
   }
   .home-content {
-    .clear-fix {
-      width: 100%;
-      height: 54px;
-    }
     .bgc {
       width: 100%;
       height: 54px;
@@ -157,7 +214,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       margin-top: -54px;
       position: relative;
       z-index: 5;
-      
+
       // animation-duration: 0.5s;
       // animation-fill-mode: both;
       // animation-name: enterAnimate;
