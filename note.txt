@@ -9,4 +9,11 @@ const NewsInfo = () => import('../pages/NewsInfo/NewsInfo')
 ===============
 如果需要根据路由参数来动态获取数据，但是当该路由组件又是缓冲组件时，那么路由参数只有初始访问路由时可以获取到,想要随时获取，可以把 useRoute()放在onActivated函数中。
 还有一种方式是把路由参数保存在本地存储，跳转路由后读取出来，然后通过传递响应式ref来连接响应性
+================
+中科大Google CDN
+Google的CDN在国内加载慢可以使用中科大的Google CDN加速，Google Fonts字体和 CSS、JS 文件都可以使用
+Google的前端公共库、免费字体库等CDN都可以使用中科大的地址替换加速，网址替换对应如下：
+ajax.googleapis.com => ajax.lug.ustc.edu.cn
+fonts.googleapis.com => fonts.lug.ustc.edu.cn
+themes.googleusercontent.com => google-themes.lug.ustc.edu.cn
 
