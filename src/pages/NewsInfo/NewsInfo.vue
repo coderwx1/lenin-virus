@@ -52,7 +52,7 @@ let { filterNewsDataById } = getData(id);
 .news-info {
   width: 100%;
   main {
-    padding: 0 20px;
+    padding: 0 20px 10px 20px;
 
     header {
       h1 {
