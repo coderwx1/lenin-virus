@@ -73,17 +73,15 @@ const { newsData } = getData();
 const homeRef = ref(null);
 const scrollVal = ref(0);
 
-const getNewsInfo = (id) => {
-  window.localStorage.setItem("id", JSON.stringify(id));
-  router.push({ path: `/news_info/${id}` });
-};
-
 // 滚动时，保存最新的scrollTop值
 onMounted(() => {
   homeRef.value.addEventListener("scroll", (e) => {
     scrollVal.value = e.target.scrollTop;
   });
 });
+
+// 缓冲组件激活时触发这个钩子
+onActivated(() => (homeRef.value.scrollTop = scrollVal.value));
 
 const scrollTo = (value) => {
   if (value == 0) {
@@ -94,10 +92,11 @@ const scrollTo = (value) => {
   }
   homeRef.value.scrollTo({ top: scrollVal.value, behavior: "smooth" });
 };
-// 缓冲组件激活时触发这个钩子
-onActivated(() => {
-  homeRef.value.scrollTop = scrollVal.value;
-});
+
+const getNewsInfo = (id) => {
+  window.localStorage.setItem("id", JSON.stringify(id));
+  router.push({ path: `/news_info/${id}` });
+};
 </script>
 <style lang="less" scoped>
 .home {
@@ -172,6 +171,7 @@ onActivated(() => {
       color: white;
       bottom: 0;
       font-size: 14px;
+      padding-bottom: 5px;
     }
   }
 
