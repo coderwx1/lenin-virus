@@ -35,7 +35,7 @@
       </section>
       <section class="fixIcon animate__animated animate__bounceInRight" :class="{ 'is-show': scrollVal >= 500 }">
         <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
-        <a href="javascript:" class="fixBottom-ico" @click="scrollToBottom"></a>
+        <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
       </section>
 
       <!-- <div class="test">
@@ -85,17 +85,14 @@ onMounted(() => {
   });
 });
 
-const scrollToBottom = () => {
-  const scrollBottomVal = homeRef.value.scrollHeight - homeRef.value.clientHeight;
-  scrollTo(scrollBottomVal);
-};
-
 const scrollTo = (value) => {
-  scrollVal.value = value;
-  homeRef.value.scrollTo({
-    top: scrollVal.value,
-    behavior: "smooth",
-  });
+  if (value == 0) {
+    scrollVal.value = value;
+  } else {
+    const scrollBottomVal = homeRef.value.scrollHeight - homeRef.value.clientHeight;
+    scrollVal.value = scrollBottomVal;
+  }
+  homeRef.value.scrollTo({ top: scrollVal.value, behavior: "smooth" });
 };
 // 缓冲组件激活时触发这个钩子
 onActivated(() => {
