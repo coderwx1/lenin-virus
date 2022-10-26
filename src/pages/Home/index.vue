@@ -1,5 +1,5 @@
 <template>
-  <div class="home" ref="homeNodeRef">
+  <div class="home" ref="homeRef">
     <div class="home-content">
       <header>
         <img src="https://i.postimg.cc/fLy21sW8/header-bg.png" />
@@ -33,9 +33,9 @@
           </li>
         </ul>
       </section>
-      <section class="fixIcon animate__animated animate__bounceInRight" :class="{ 'is-show': scrollTopVal >= 500 }">
-        <a href="javascript:" class="fixTop-ico" @click="backPosition(0)"></a>
-        <a href="javascript:" class="fixBottom-ico" @click="backPosition(1)"></a>
+      <section class="fixIcon animate__animated animate__bounceInRight" :class="{ 'is-show': scrollVal >= 500 }">
+        <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
+        <a href="javascript:" class="fixBottom-ico" @click="scrollToBottom"></a>
       </section>
 
       <!-- <div class="test">
@@ -69,9 +69,9 @@ import { useRouter } from "vue-router";
 import { getData } from "../getData";
 
 const router = useRouter();
-const scrollTopVal = ref(0);
-const homeNodeRef = ref(null);
 const { newsData } = getData();
+const homeRef = ref(null);
+const scrollVal = ref(0);
 
 const getNewsInfo = (id) => {
   window.localStorage.setItem("id", JSON.stringify(id));
@@ -80,30 +80,26 @@ const getNewsInfo = (id) => {
 
 // 滚动时，保存最新的scrollTop值
 onMounted(() => {
-  homeNodeRef.value.addEventListener("scroll", (e) => {
-    scrollTopVal.value = e.target.scrollTop;
-    console.log(e.target.scrollTop);
+  homeRef.value.addEventListener("scroll", (e) => {
+    scrollVal.value = e.target.scrollTop;
   });
 });
 
-const backPosition = (position) => {
-  if (position == 0) {
-    scrollTopVal.value = 0;
-    homeNodeRef.value.scrollTo({
-      top: scrollTopVal.value,
-      behavior: "smooth",
-    });
-  } else {
-    scrollTopVal.value = homeNodeRef.value.scrollHeight - homeNodeRef.value.clientHeight;
-    homeNodeRef.value.scrollTo({
-      top: scrollTopVal.value,
-      behavior: "smooth",
-    });
-  }
+const scrollToBottom = () => {
+  const scrollBottomVal = homeRef.value.scrollHeight - homeRef.value.clientHeight;
+  scrollTo(scrollBottomVal);
+};
+
+const scrollTo = (value) => {
+  scrollVal.value = value;
+  homeRef.value.scrollTo({
+    top: scrollVal.value,
+    behavior: "smooth",
+  });
 };
 // 缓冲组件激活时触发这个钩子
 onActivated(() => {
-  homeNodeRef.value.scrollTop = scrollTopVal.value;
+  homeRef.value.scrollTop = scrollVal.value;
 });
 </script>
 <style lang="less" scoped>
@@ -111,19 +107,23 @@ onActivated(() => {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+
   //   chrome去除滚动条样式
   &::-webkit-scrollbar {
     display: none;
   }
+
   //   兼容火狐
   &.scw {
     scrollbar-width: none;
     overflow: -moz-scrollbars-none;
   }
+
   //   兼容IE10+
   &.msscw {
     -ms-overflow-style: none;
   }
+
   .fixIcon {
     position: fixed;
     bottom: 3.466667rem;
@@ -134,6 +134,7 @@ onActivated(() => {
     &.is-show {
       display: block;
     }
+
     .fixTop-ico {
       display: block;
       width: 36px;
@@ -141,6 +142,7 @@ onActivated(() => {
       background: url(https://x2.ifengimg.com/fe/shank/channel/top.e15cad56.png) no-repeat 0 0/36px 36px;
       margin-bottom: 6px;
     }
+
     .fixBottom-ico {
       .fixTop-ico();
       background: url(https://x2.ifengimg.com/fe/shank/channel/bottom.93b36099.png) no-repeat 0 0/36px 36px;
@@ -152,6 +154,7 @@ onActivated(() => {
     width: 375px;
     height: 54px;
     position: relative;
+
     img {
       width: 100%;
       height: 100%;
@@ -165,6 +168,7 @@ onActivated(() => {
       color: rgb(253, 253, 253);
       font-weight: 600;
     }
+
     p {
       position: absolute;
       right: 22px;
@@ -173,6 +177,7 @@ onActivated(() => {
       font-size: 14px;
     }
   }
+
   .home-content {
     .bgc {
       width: 100%;
@@ -185,24 +190,28 @@ onActivated(() => {
         height: 54px;
         background: linear-gradient(rgb(253, 55, 38), hsla(0, 0%, 100%, 0));
       }
+
       .md {
         flex: auto;
         height: 54px;
         background: linear-gradient(rgb(254, 100, 86), hsla(0, 0%, 100%, 0));
         //  background-color: rgb(237, 241, 243);
       }
+
       .right-bg {
         width: 5%;
         height: 54px;
         background: linear-gradient(rgb(255, 98, 54), hsla(0, 0%, 100%, 0));
       }
     }
+
     .tab {
       background-color: rgb(255, 255, 255);
       position: fixed;
       width: 375px;
       bottom: 0;
     }
+
     .news-wrapper {
       margin-top: -54px;
       position: relative;
@@ -222,25 +231,30 @@ onActivated(() => {
       // }
       ul {
         list-style: none;
+
         li {
           padding: 12px;
           margin: 10px;
           margin-top: 0;
           border-radius: 10px;
           background-color: rgb(255, 255, 255);
+
           &.first {
             border-top-left-radius: 0px;
             border-top-right-radius: 0px;
           }
+
           div {
             article {
               display: flex;
+
               .s-left {
                 display: flex;
                 flex-wrap: wrap;
                 flex: 1;
                 font-size: 15px;
                 color: black;
+
                 h4 {
                   display: -webkit-box;
                   -webkit-line-clamp: 2;
@@ -261,6 +275,7 @@ onActivated(() => {
                   align-items: end;
                   color: #999;
                   font-size: 12px;
+
                   .s-source {
                     max-width: 86px;
                     overflow: hidden;
@@ -269,21 +284,25 @@ onActivated(() => {
                   }
                 }
               }
+
               .s-right {
                 width: 109px;
                 height: 83.5px;
                 margin-left: 10px;
+
                 img {
                   width: 100%;
                   height: 100%;
                   object-fit: cover;
                   border-radius: 3px;
                 }
+
                 img[lazy="loading"] {
                   background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
                   background-size: 400% 100%;
                   animation: loading-animate 1s ease infinite;
                 }
+
                 @keyframes loading-animate {
                   0% {
                     background-position: 100% 50%;
@@ -304,14 +323,17 @@ onActivated(() => {
   .img-list {
     width: 100%;
     overflow: hidden;
+
     img {
       width: 100%;
     }
   }
+
   .footer {
     .title {
       color: red;
     }
+
     .des {
       font-size: 16px;
     }
