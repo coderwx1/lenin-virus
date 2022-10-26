@@ -110,8 +110,20 @@ onActivated(() => {
 .home {
   width: 100%;
   height: 100%;
-  // overflow: hidden;
   overflow-y: scroll;
+  //   chrome去除滚动条样式
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  //   兼容火狐
+  &.scw {
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+  }
+  //   兼容IE10+
+  &.msscw {
+    -ms-overflow-style: none;
+  }
   .fixIcon {
     position: fixed;
     bottom: 3.466667rem;
