@@ -140,7 +140,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
   //     }
   //   }
   // }
-
+ 
   header {
     width: 375px;
     height: 54px;
