@@ -39,19 +39,13 @@
 </template>
 
 <script setup>
-import { ref, onActivated } from "vue";
+import { ref } from "vue";
 import { getData } from "../getData";
+import { useRoute } from "vue-router";
 
-/*
-如果需要根据路由参数来动态获取数据，但是当该路由组件又是缓冲组件时，那么路由参数只有初始访问路由时可以获取到,想要随时获取，可以把 useRoute()放在onActivated函数中。
-还有一种方式是把路由参数保存在本地存储，跳转路由后读取出来，然后通过传递响应式ref来连接响应性
- */
-let id = ref(0);
+const route = useRoute();
+let id = ref(route.params.id);
 let { filterNewsDataById } = getData(id);
-
-onActivated(() => {
-  id.value = window.localStorage.getItem("id");
-});
 </script>
 
 <style lang="less" scoped>

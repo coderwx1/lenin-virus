@@ -33,7 +33,8 @@
           </li>
         </ul>
       </section>
-      <section class="fixIcon animate__animated animate__bounceInRight" :class="{ 'is-show': scrollVal >= 500 }">
+      <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
+        <!-- classObject -->
         <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
         <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
       </section>
@@ -94,7 +95,6 @@ const scrollTo = (value) => {
 };
 
 const getNewsInfo = (id) => {
-  window.localStorage.setItem("id", JSON.stringify(id));
   router.push({ path: `/news_info/${id}` });
 };
 </script>
@@ -122,8 +122,8 @@ const getNewsInfo = (id) => {
 
   .fixIcon {
     position: fixed;
-    bottom: 3.466667rem;
-    right: 0.346667rem;
+    bottom: 130px;
+    right: 13px;
     z-index: 999;
     display: none;
 
@@ -192,7 +192,6 @@ const getNewsInfo = (id) => {
         flex: auto;
         height: 54px;
         background: linear-gradient(rgb(254, 100, 86), hsla(0, 0%, 100%, 0));
-        //  background-color: rgb(237, 241, 243);
       }
 
       .right-bg {
@@ -214,18 +213,6 @@ const getNewsInfo = (id) => {
       position: relative;
       z-index: 5;
 
-      // animation-duration: 0.5s;
-      // animation-fill-mode: both;
-      // animation-name: enterAnimate;
-
-      // @keyframes enterAnimate {
-      //   from {
-      //     transform: translateX(-100%);
-      //   }
-      //   to {
-      //     transform: translateX(0);
-      //   }
-      // }
       ul {
         list-style: none;
 
@@ -314,15 +301,6 @@ const getNewsInfo = (id) => {
           }
         }
       }
-    }
-  }
-
-  .img-list {
-    width: 100%;
-    overflow: hidden;
-
-    img {
-      width: 100%;
     }
   }
 

@@ -1,0 +1,12 @@
+过渡组件需要放在keepAlive组件外层，不然缓冲组件的生命周期不执行 
+===================
+如果自己写过渡，这种引入方式在刷新页面时 过渡效果有问题 （用箭头函数引入方式没问题）
+ import Home from '../pages/Home'
+ import NewsInfo from '../pages/NewsInfo'
+如果要用框架自带的路由过渡，需要用这种引入方式，同时在APP组件设置overflow：hidden
+const Home = () => import('../pages/Home')
+const NewsInfo = () => import('../pages/NewsInfo/NewsInfo')
+===============
+如果需要根据路由参数来动态获取数据，但是当该路由组件又是缓冲组件时，那么路由参数只有初始访问路由时可以获取到,想要随时获取，可以把 useRoute()放在onActivated函数中。
+还有一种方式是把路由参数保存在本地存储，跳转路由后读取出来，然后通过传递响应式ref来连接响应性
+
