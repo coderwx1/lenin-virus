@@ -67,9 +67,9 @@
 import { ref, onMounted, onActivated } from "vue";
 import { useRouter } from "vue-router";
 import { getData } from "../getData";
+
 const router = useRouter();
 const scrollTopVal = ref(0);
-
 const homeNodeRef = ref(null);
 const { newsData } = getData();
 
@@ -77,10 +77,12 @@ const getNewsInfo = (id) => {
   window.localStorage.setItem("id", JSON.stringify(id));
   router.push({ path: `/news_info/${id}` });
 };
+
 // 滚动时，保存最新的scrollTop值
 onMounted(() => {
   homeNodeRef.value.addEventListener("scroll", (e) => {
     scrollTopVal.value = e.target.scrollTop;
+    console.log(e.target.scrollTop);
   });
 });
 
@@ -100,15 +102,16 @@ const backPosition = (position) => {
   }
 };
 // 缓冲组件激活时触发这个钩子
-onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
+onActivated(() => {
+  homeNodeRef.value.scrollTop = scrollTopVal.value;
+});
 </script>
 <style lang="less" scoped>
 .home {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  // overflow: hidden;
   overflow-y: scroll;
-
   .fixIcon {
     position: fixed;
     bottom: 3.466667rem;
@@ -132,7 +135,7 @@ onActivated(() => (homeNodeRef.value.scrollTop = scrollTopVal.value));
       margin-bottom: 0;
     }
   }
- 
+
   header {
     width: 375px;
     height: 54px;

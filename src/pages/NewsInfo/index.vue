@@ -51,7 +51,6 @@ let { filterNewsDataById } = getData(id);
 
 onActivated(() => {
   id.value = window.localStorage.getItem("id");
-  // alert(window.localStorage.getItem("id"))
 });
 </script>
 
@@ -60,9 +59,7 @@ onActivated(() => {
   width: 100%;
   main {
     padding: 0 20px;
-    // animation-duration: 0.5s;
-    // animation-fill-mode: both;
-    // animation-name: enterAnimate;
+
     header {
       h1 {
         font-weight: 500;
