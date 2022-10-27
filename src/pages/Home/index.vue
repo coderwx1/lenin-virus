@@ -152,7 +152,7 @@ const getNewsInfo = (id) => {
       position: absolute;
       top: 0;
       padding: 16px 22px 0 22px;
-      font-size: 18px;
+      font-size: 17px;
       color: rgb(253, 253, 253);
       font-weight: 600;
     }
