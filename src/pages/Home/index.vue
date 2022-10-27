@@ -15,8 +15,8 @@
       <!-- 这个标签用到了过渡，页面初始加载时，不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断只有数据请求到了才会渲染这个标签） -->
       <section class="news-wrapper">
         <ul>
-          <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false">
-            <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
+          <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false">
+            <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 && isShowMarginBottom }">
               <div>
                 <article>
                   <section class="s-left">
@@ -59,6 +59,8 @@
 </template>
 
 <script setup>
+import { Notify } from "vant";
+import "vant/es/notify/style";
 import { ref, onMounted, onActivated } from "vue";
 import { useRouter } from "vue-router";
 // 获取分页数据
@@ -70,6 +72,7 @@ const homeRef = ref(null);
 const scrollVal = ref(0);
 const loading = ref(false);
 const finished = ref(false);
+const isShowMarginBottom = ref(true);
 // 滚动时，保存最新的scrollTop值
 onMounted(() => {
   homeRef.value.addEventListener("scroll", (e) => {
@@ -108,7 +111,8 @@ const onLoad = () => {
     }
     // 数据全部加载完成
     finished.value = true;
-    console.log(newsData.value.length);
+    isShowMarginBottom.value = false;
+    Notify("没有更多数据了");
   }, 800);
 };
 </script>
