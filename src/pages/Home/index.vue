@@ -13,7 +13,7 @@
       </div>
       <section class="news-wrapper">
         <ul>
-          <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多数据了" @load="onLoad" :immediate-check="false">
+          <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false">
             <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
               <div>
                 <article>
@@ -32,6 +32,8 @@
             </li>
           </van-list>
         </ul>
+
+        <van-divider :style="{ color: '#969799', borderColor: '#969799' }" v-show="finished">END</van-divider>
       </section>
       <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
         <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
