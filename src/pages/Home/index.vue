@@ -41,8 +41,8 @@
     <div class="loading" style="width: 100%; height: 100%" v-if="!newsData.length && !errStatus">
       <van-loading type="spinner" vertical>加载中...</van-loading>
     </div>
-    <div class="err-box" v-if="errStatus" @click="$router.push('/home')">
-      <van-empty image="error" description="请求失败，点击重试！" />
+    <div class="err-box" v-if="errStatus">
+      <van-empty image="error" description="请求失败，请刷新网页重试！" />
     </div>
     <div class="footer" v-if="newsData.length && !errStatus">
       <div class="footer-content">
