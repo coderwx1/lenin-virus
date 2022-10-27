@@ -31,8 +31,8 @@
         </div>
       </template>
     </main>
-    <!-- 因为添加了路由过渡，当访问该路由，页面数据没有请求回来时，会给人一种感觉路由过渡没有生效 加个loding可以看到路由过渡 -->
-    <div class="loading" style="width: 100%; height: 100vh" v-else>
+    <!-- 如果添加了路由过渡，当访问该路由，页面数据没有请求回来时，会给人一种感觉路由过渡没有生效 加个loding可以看到路由过渡 -->
+    <div class="loading" style="width: 100%; height: 100%" v-else>
       <van-loading type="spinner" vertical>加载中...</van-loading>
     </div>
   </div>
