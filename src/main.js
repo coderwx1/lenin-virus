@@ -9,7 +9,9 @@ import 'animate.css';
 import {
     Loading,
     Lazyload,
-    List
+    List,
+    Empty
+
 } from 'vant';
 
 const app = createApp(App)
@@ -24,8 +26,7 @@ app.use(Lazyload, {
 app.use(Loading);
 // app.use(Button);
 app.use(List);
-
-
+app.use(Empty);
 app.use(router)
 
 

@@ -1,6 +1,6 @@
 <template>
   <div class="news-info">
-    <main v-if=" filterNewsDataById.length ">
+    <main v-if="filterNewsDataById.length">
       <template v-for="item in filterNewsDataById" :key="item.id">
         <header>
           <h1 class="article-title">
@@ -31,10 +31,13 @@
         </div>
       </template>
     </main>
-  
-    <!-- 如果添加了路由过渡，当访问该路由，页面数据没有请求回来时，会给人一种感觉路由过渡没有生效 加个loding可以看到路由过渡 -->
-    <div class="loading" v-else>
+
+    <div class="loading" v-if="!filterNewsDataById.length && !errStatus">
       <van-loading type="spinner" vertical>加载中...</van-loading>
+    </div>
+
+    <div class="err-box" v-if="errStatus" @click="$router.push(`/news_info/${id}`)">
+      <van-empty image="error" description="请求失败，点击重试！" />
     </div>
   </div>
 </template>
@@ -46,7 +49,7 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 let id = ref(route.params.id);
-let { filterNewsDataById } = getAllData(id);
+let { filterNewsDataById, errStatus } = getAllData(id);
 </script>
 
 <style lang="less" scoped>
@@ -132,6 +135,17 @@ let { filterNewsDataById } = getAllData(id);
     bottom: 0;
     left: 0;
     right: 0;
+  }
+
+  .err-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 }
 </style>

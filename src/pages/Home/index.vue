@@ -11,12 +11,10 @@
         <div class="md"></div>
         <div class="right-bg"></div>
       </div>
-
-      <!-- 这个标签用到了过渡，页面初始加载时，不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断只有数据请求到了才会渲染这个标签） -->
       <section class="news-wrapper">
         <ul>
-          <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false">
-            <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 && isShowMarginBottom }">
+          <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多数据了" @load="onLoad" :immediate-check="false">
+            <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
               <div>
                 <article>
                   <section class="s-left">
@@ -35,18 +33,18 @@
           </van-list>
         </ul>
       </section>
-
       <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
-        <!-- classObject -->
         <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
         <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
       </section>
     </div>
-
-    <div class="loading" style="width: 100%; height: 100%" v-else>
+    <div class="loading" style="width: 100%; height: 100%" v-if="!newsData.length && !errStatus">
       <van-loading type="spinner" vertical>加载中...</van-loading>
     </div>
-    <div class="footer" v-if="newsData.length">
+    <div class="err-box" v-if="errStatus" @click="$router.push('/home')">
+      <van-empty image="error" description="请求失败，点击重试！" />
+    </div>
+    <div class="footer" v-if="newsData.length && !errStatus">
       <div class="footer-content">
         <p>
           <span>献给那些</span>
@@ -59,20 +57,18 @@
 </template>
 
 <script setup>
-import { Notify } from "vant";
-import "vant/es/notify/style";
 import { ref, onMounted, onActivated } from "vue";
 import { useRouter } from "vue-router";
 // 获取分页数据
 import { getPageData } from "../getData";
 
 const router = useRouter();
-const { newsData } = getPageData();
+
+const { newsData, errStatus } = getPageData();
 const homeRef = ref(null);
 const scrollVal = ref(0);
 const loading = ref(false);
 const finished = ref(false);
-const isShowMarginBottom = ref(true);
 // 滚动时，保存最新的scrollTop值
 onMounted(() => {
   homeRef.value.addEventListener("scroll", (e) => {
@@ -111,8 +107,6 @@ const onLoad = () => {
     }
     // 数据全部加载完成
     finished.value = true;
-    isShowMarginBottom.value = false;
-    Notify("没有更多数据了");
   }, 800);
 };
 </script>
@@ -314,6 +308,17 @@ const onLoad = () => {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .err-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
   .footer {
     width: 100%;
