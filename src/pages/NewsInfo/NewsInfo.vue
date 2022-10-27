@@ -1,6 +1,36 @@
 <template>
   <div class="news-info">
-    <div v-if="0"></div>
+    <main v-if="filterNewsDataById.length">
+      <template v-for="item in filterNewsDataById" :key="item.id">
+        <header>
+          <h1 class="article-title">
+            {{ item.title }}
+          </h1>
+          <section class="article-info">
+            <div class="article-source">
+              <div class="author">
+                <span>{{ item.source }}</span>
+              </div>
+              <div class="uptate-time">
+                <span>最后更新时间:{{ item.lastUpdateTime }}</span>
+              </div>
+            </div>
+          </section>
+        </header>
+
+        <div class="article-content">
+          <ul>
+            <li v-for="userObj in item.content" :key="userObj.imgUrls[0]">
+              <lazy-component>
+                <template v-for="imgUrl in userObj.imgUrls" :key="imgUrl">
+                  <img v-lazy="imgUrl" />
+                </template>
+              </lazy-component>
+            </li>
+          </ul>
+        </div>
+      </template>
+    </main>
     <!-- 如果添加了路由过渡，当访问该路由，页面数据没有请求回来时，会给人一种感觉路由过渡没有生效 加个loding可以看到路由过渡 -->
     <div class="loading" v-else>
       <van-loading type="spinner" vertical>加载中...</van-loading>
