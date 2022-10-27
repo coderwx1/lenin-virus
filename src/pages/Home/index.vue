@@ -1,6 +1,6 @@
 <template>
   <div class="home" ref="homeRef">
-    <div class="home-content">
+    <div class="home-content" v-if="newsData.length">
       <header>
         <img src="https://i.postimg.cc/fLy21sW8/header-bg.png" />
         <h1 class="title">始终坚持一切为了人民</h1>
@@ -13,7 +13,7 @@
       </div>
 
       <!-- 这个标签用到了过渡，页面初始加载时，不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断只有数据请求到了才会渲染这个标签） -->
-      <section class="news-wrapper" v-if="newsData.length">
+      <section class="news-wrapper">
         <ul>
           <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
             <div>
@@ -33,6 +33,7 @@
           </li>
         </ul>
       </section>
+
       <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
         <!-- classObject -->
         <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
@@ -53,8 +54,11 @@
         <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
       </div> -->
     </div>
-    <div class="footer">
-      <!-- <img src="./jesus.png" alt=""> -->
+
+    <div class="loading" style="width: 100%; height: 100vh" v-else>
+      <van-loading type="spinner" vertical>加载中...</van-loading>
+    </div>
+    <div class="footer" v-if="newsData.length">
       <div class="footer-content">
         <p>
           <span>献给那些</span>
@@ -305,7 +309,16 @@ const getNewsInfo = (id) => {
       }
     }
   }
-
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+  }
   .footer {
     width: 100%;
     height: 238px;
@@ -330,6 +343,7 @@ const getNewsInfo = (id) => {
           margin: 32px 8px 0 8px;
         }
         :nth-child(3) {
+          font-size: 18px;
           color: #fff;
           padding-top: 138px;
         }
