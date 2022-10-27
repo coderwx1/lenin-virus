@@ -1,61 +1,63 @@
 <template>
-  <div class="home" ref="homeRef">
-    <div class="home-content" v-if="newsData.length">
-      <header>
-        <img src="https://i.postimg.cc/fLy21sW8/header-bg.png" />
-        <h1 class="title">始终坚持一切为了人民</h1>
-        <p>——习近平</p>
-      </header>
-      <div class="bgc">
-        <div class="left-bg"></div>
-        <div class="md"></div>
-        <div class="right-bg"></div>
-      </div>
-      <section class="news-wrapper">
-        <ul>
-          <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false">
-            <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
-              <div>
-                <article>
-                  <section class="s-left">
-                    <h4>{{ item.title }}</h4>
-                    <div class="s-info">
-                      <span class="s-source"> {{ item.source }} </span>
-                      <span class="add-time">{{ "添加时间:" + item.date }}</span>
-                    </div>
-                  </section>
-                  <section class="s-right">
-                    <img v-lazy="item.small_img" />
-                  </section>
-                </article>
-              </div>
-            </li>
-          </van-list>
-        </ul>
+  <van-config-provider :theme-vars="themeVars" style="width: 100%; height: 100%">
+    <div class="home" ref="homeRef">
+      <div class="home-content" v-if="newsData.length">
+        <header>
+          <img src="https://i.postimg.cc/fLy21sW8/header-bg.png" />
+          <h1 class="title">始终坚持一切为了人民</h1>
+          <p>——习近平</p>
+        </header>
+        <div class="bgc">
+          <div class="left-bg"></div>
+          <div class="md"></div>
+          <div class="right-bg"></div>
+        </div>
+        <section class="news-wrapper">
+          <ul>
+            <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false">
+              <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
+                <div>
+                  <article>
+                    <section class="s-left">
+                      <h4>{{ item.title }}</h4>
+                      <div class="s-info">
+                        <span class="s-source"> {{ item.source }} </span>
+                        <span class="add-time">{{ "添加时间:" + item.date }}</span>
+                      </div>
+                    </section>
+                    <section class="s-right">
+                      <img v-lazy="item.small_img" />
+                    </section>
+                  </article>
+                </div>
+              </li>
+            </van-list>
+          </ul>
 
-        <van-divider :style="{ color: '#969799', borderColor: '#969799' }" v-show="finished">END</van-divider>
-      </section>
-      <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
-        <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
-        <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
-      </section>
-    </div>
-    <div class="loading" style="width: 100%; height: 100%" v-if="!newsData.length && !errStatus">
-      <van-loading type="spinner" vertical>加载中...</van-loading>
-    </div>
-    <div class="err-box" v-if="errStatus">
-      <van-empty image="error" description="请求失败，请刷新网页重试！" />
-    </div>
-    <div class="footer" v-if="newsData.length && !errStatus">
-      <div class="footer-content">
-        <p>
-          <span>献给那些</span>
-          <span>死于过度防疫的</span>
-          <span>人们</span>
-        </p>
+          <van-divider :style="{ color: '#969799', borderColor: '#969799' }" v-show="finished">END</van-divider>
+        </section>
+        <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
+          <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
+          <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
+        </section>
+      </div>
+      <div class="loading" style="width: 100%; height: 100%" v-if="!newsData.length && !errStatus">
+        <van-loading type="spinner" vertical>加载中...</van-loading>
+      </div>
+      <div class="err-box" v-if="errStatus">
+        <van-empty image="error" description="请求失败，请刷新网页重试！" />
+      </div>
+      <div class="footer" v-if="newsData.length && !errStatus">
+        <div class="footer-content">
+          <p>
+            <span>献给那些</span>
+            <span>死于过度防疫的</span>
+            <span>人们</span>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </van-config-provider>
 </template>
 
 <script setup>
@@ -109,6 +111,10 @@ const onLoad = () => {
     // 数据全部加载完成
     finished.value = true;
   }, 800);
+};
+
+const themeVars = {
+  dividerMargin: "10px 0",
 };
 </script>
 <style lang="less" scoped>

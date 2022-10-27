@@ -6,7 +6,7 @@ import router from './router'
 import 'lib-flexible/flexible'
 import 'animate.css';
 
-import { Loading, Lazyload, List, Empty, Divider } from "vant";
+import { Loading, Lazyload, List, Empty, Divider, ConfigProvider } from "vant";
 
 const app = createApp(App)
 // const loadimage = require('@/pages/NewsInfo/loading.jpg')
@@ -22,6 +22,7 @@ app.use(Loading);
 app.use(List);
 app.use(Empty); 
 app.use(Divider);
+app.use(ConfigProvider);
 
 app.use(router)
 
