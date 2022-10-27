@@ -324,11 +324,10 @@ const getNewsInfo = (id) => {
         color: #8f8f9f;
         font-family: "ZCOOL XiaoWei", serif;
         span {
-          display: inline-block;
           width: 16px;
         }
         :nth-child(2) {
-          margin: 26px 8px 0 8px;
+          margin: 32px 8px 0 8px;
         }
         :nth-child(3) {
           color: #fff;
