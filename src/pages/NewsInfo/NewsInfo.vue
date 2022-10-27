@@ -1,6 +1,6 @@
 <template>
   <div class="news-info">
-    <main v-if="filterNewsDataById.length">
+    <main v-if=" filterNewsDataById.length ">
       <template v-for="item in filterNewsDataById" :key="item.id">
         <header>
           <h1 class="article-title">
@@ -31,6 +31,7 @@
         </div>
       </template>
     </main>
+  
     <!-- 如果添加了路由过渡，当访问该路由，页面数据没有请求回来时，会给人一种感觉路由过渡没有生效 加个loding可以看到路由过渡 -->
     <div class="loading" v-else>
       <van-loading type="spinner" vertical>加载中...</van-loading>
@@ -40,12 +41,12 @@
 
 <script setup>
 import { ref } from "vue";
-import { getData } from "../getData";
+import { getAllData } from "../getData";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 let id = ref(route.params.id);
-let { filterNewsDataById } = getData(id);
+let { filterNewsDataById } = getAllData(id);
 </script>
 
 <style lang="less" scoped>

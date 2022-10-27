@@ -15,22 +15,24 @@
       <!-- 这个标签用到了过渡，页面初始加载时，不管有没有数据都会应用动画过渡效果，等稍后数据来了就会直接填充到页面（会给人一种过渡没有生效的感觉，所以这里直接判断只有数据请求到了才会渲染这个标签） -->
       <section class="news-wrapper">
         <ul>
-          <li v-for="item in newsData" :key="item.id" @click="getNewsInfo(item.id)">
-            <div>
-              <article>
-                <section class="s-left">
-                  <h4>{{ item.title }}</h4>
-                  <div class="s-info">
-                    <span class="s-source"> {{ item.source }} </span>
-                    <span class="add-time">{{ "添加时间:" + item.date }}</span>
-                  </div>
-                </section>
-                <section class="s-right">
-                  <img v-lazy="item.small_img" />
-                </section>
-              </article>
-            </div>
-          </li>
+          <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false">
+            <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
+              <div>
+                <article>
+                  <section class="s-left">
+                    <h4>{{ item.title }}</h4>
+                    <div class="s-info">
+                      <span class="s-source"> {{ item.source }} </span>
+                      <span class="add-time">{{ "添加时间:" + item.date }}</span>
+                    </div>
+                  </section>
+                  <section class="s-right">
+                    <img v-lazy="item.small_img" />
+                  </section>
+                </article>
+              </div>
+            </li>
+          </van-list>
         </ul>
       </section>
 
@@ -59,13 +61,15 @@
 <script setup>
 import { ref, onMounted, onActivated } from "vue";
 import { useRouter } from "vue-router";
-import { getData } from "../getData";
+// 获取分页数据
+import { getPageData } from "../getData";
 
 const router = useRouter();
-const { newsData } = getData();
+const { newsData } = getPageData();
 const homeRef = ref(null);
 const scrollVal = ref(0);
-
+const loading = ref(false);
+const finished = ref(false);
 // 滚动时，保存最新的scrollTop值
 onMounted(() => {
   homeRef.value.addEventListener("scroll", (e) => {
@@ -88,6 +92,24 @@ const scrollTo = (value) => {
 
 const getNewsInfo = (id) => {
   router.push({ path: `/news_info/${id}` });
+};
+
+let pageNum = ref(0);
+// 滑动到页面底部执行
+const onLoad = () => {
+  // 模拟分页加载数据
+  setTimeout(() => {
+    pageNum.value += 1;
+    if (pageNum.value < newsData.value.length) {
+      newsData.value[0].page.push(...newsData.value[pageNum.value].page);
+      // 加载状态结束
+      loading.value = false;
+      return;
+    }
+    // 数据全部加载完成
+    finished.value = true;
+    console.log(newsData.value.length);
+  }, 800);
 };
 </script>
 <style lang="less" scoped>
@@ -193,13 +215,6 @@ const getNewsInfo = (id) => {
       }
     }
 
-    .tab {
-      background-color: rgb(255, 255, 255);
-      position: fixed;
-      width: 375px;
-      bottom: 0;
-    }
-
     .news-wrapper {
       margin-top: -54px;
       position: relative;
@@ -214,16 +229,12 @@ const getNewsInfo = (id) => {
           margin-top: 0;
           border-radius: 10px;
           background-color: rgb(255, 255, 255);
-
-          &.first {
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
+          &.last-li {
+            margin-bottom: 0;
           }
-
           div {
             article {
               display: flex;
-
               .s-left {
                 display: flex;
                 flex-wrap: wrap;
@@ -262,8 +273,8 @@ const getNewsInfo = (id) => {
               }
 
               .s-right {
-                width: 109px;
-                height: 83.5px;
+                width: 108px;
+                height: 84px;
                 margin-left: 10px;
 
                 img {

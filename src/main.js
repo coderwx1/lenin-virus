@@ -9,7 +9,7 @@ import 'animate.css';
 import {
     Loading,
     Lazyload,
-    Button
+    List
 } from 'vant';
 
 const app = createApp(App)
@@ -22,8 +22,8 @@ app.use(Lazyload, {
     error: errorimage
 });
 app.use(Loading);
-app.use(Button);
-
+// app.use(Button);
+app.use(List);
 
 
 app.use(router)
