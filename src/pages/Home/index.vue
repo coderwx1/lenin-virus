@@ -39,26 +39,12 @@
         <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
         <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
       </section>
-
-      <!-- <div class="test">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li>底部</li>
-        </ul>
-      </div> -->
-      <!-- <div class="tab">
-        <van-button type="default" size="large" @click="newsData.reverse()">最近/默认</van-button>
-      </div> -->
     </div>
 
-    <div class="loading" style="width: 100%; height: 100vh" v-else>
+    <div class="loading" style="width: 100%; height: 100%" v-else>
       <van-loading type="spinner" vertical>加载中...</van-loading>
     </div>
-    <div class="footer" >
+    <div class="footer">
       <div class="footer-content">
         <p>
           <span>献给那些</span>
@@ -128,7 +114,7 @@ const getNewsInfo = (id) => {
 
   .fixIcon {
     position: fixed;
-    bottom: 130px;
+    bottom: 238px;
     right: 13px;
     z-index: 999;
     display: none;
@@ -313,11 +299,6 @@ const getNewsInfo = (id) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // bottom: 0;
   }
   .footer {
     width: 100%;
@@ -333,7 +314,7 @@ const getNewsInfo = (id) => {
       p {
         display: flex;
         flex: 100%;
-        font-size: 16px;
+        font-size: 18px;
         color: #8f8f9f;
         font-family: "ZCOOL XiaoWei", serif;
         span {
@@ -343,7 +324,6 @@ const getNewsInfo = (id) => {
           margin: 32px 8px 0 8px;
         }
         :nth-child(3) {
-          font-size: 18px;
           color: #fff;
           padding-top: 138px;
         }
