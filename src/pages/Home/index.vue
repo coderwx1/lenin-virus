@@ -54,8 +54,13 @@
       </div> -->
     </div>
     <div class="footer">
+      <!-- <img src="./jesus.png" alt=""> -->
       <div class="footer-content">
-        <p>献给那些死于过度防疫的<span>人们</span></p>
+        <p>
+          <span>献给那些</span>
+          <span>死于过度防疫的</span>
+          <span>人们</span>
+        </p>
       </div>
     </div>
   </div>
@@ -303,18 +308,32 @@ const getNewsInfo = (id) => {
 
   .footer {
     width: 100%;
+    height: 238px;
     padding: 20px;
-    background: #0e163c;
-    text-align: center;
+    background: url(./jesus.png) no-repeat 0 0/100% 100%;
+    background-color: #0e163c;
+
     .footer-content {
-      line-height: 20px;
+      display: flex;
+      height: 100%;
+      align-items: center;
       p {
+        display: flex;
+        flex: 100%;
         font-size: 16px;
         color: #8f8f9f;
-         font-family: 'ZCOOL XiaoWei', serif;
-         span{
+        font-family: "ZCOOL XiaoWei", serif;
+        span {
+          display: inline-block;
+          width: 16px;
+        }
+        :nth-child(2) {
+          margin: 26px 8px 0 8px;
+        }
+        :nth-child(3) {
           color: #fff;
-         }
+          padding-top: 138px;
+        }
       }
     }
   }
