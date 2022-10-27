@@ -63,7 +63,6 @@ import { useRouter } from "vue-router";
 import { getPageData } from "../getData";
 
 const router = useRouter();
-
 const { newsData, errStatus } = getPageData();
 const homeRef = ref(null);
 const scrollVal = ref(0);

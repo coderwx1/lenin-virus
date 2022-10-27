@@ -36,7 +36,7 @@
       <van-loading type="spinner" vertical>加载中...</van-loading>
     </div>
 
-    <div class="err-box" v-if="errStatus" @click="$router.push(`/news_info/${id}`)">
+    <div class="err-box" v-if="errStatus" @click="getAllData(id)">
       <van-empty image="error" description="请求失败，点击重试！" />
     </div>
   </div>
