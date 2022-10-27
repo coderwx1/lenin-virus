@@ -44,7 +44,7 @@
     <div class="loading" style="width: 100%; height: 100%" v-else>
       <van-loading type="spinner" vertical>加载中...</van-loading>
     </div>
-    <div class="footer">
+    <div class="footer" v-if="newsData.length">
       <div class="footer-content">
         <p>
           <span>献给那些</span>
