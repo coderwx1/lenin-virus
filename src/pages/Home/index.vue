@@ -314,7 +314,7 @@ const getNewsInfo = (id) => {
       p {
         display: flex;
         flex: 100%;
-        font-size: 18px;
+        font-size: 16px;
         color: #8f8f9f;
         font-family: "ZCOOL XiaoWei", serif;
         span {
