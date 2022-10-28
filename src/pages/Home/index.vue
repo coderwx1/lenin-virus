@@ -14,7 +14,7 @@
         </div>
         <section class="news-wrapper">
           <ul>
-            <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false">
+            <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false" offset="200">
               <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
                 <div>
                   <article>

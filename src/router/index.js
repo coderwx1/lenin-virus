@@ -4,8 +4,12 @@ import {
   createWebHistory
 } from 'vue-router'
 
-const Home = () => import('../pages/Home')
-const NewsInfo = () => import('../pages/NewsInfo/NewsInfo')
+
+import Home from "../pages/Home";
+import NewsInfo from "../pages/NewsInfo/NewsInfo";
+
+// const Home = () => import('../pages/Home')
+// const NewsInfo = () => import('../pages/NewsInfo/NewsInfo')
 
 const routes = [{
     path: '/',
