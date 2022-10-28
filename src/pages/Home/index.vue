@@ -14,7 +14,7 @@
         </div>
         <section class="news-wrapper">
           <ul>
-            <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false" offset="200">
+            <van-list v-model:loading="loading" :finished="finished" @load="onLoad" :immediate-check="false" offset="50">
               <li v-for="(item, i) in newsData[0].page" :key="item.id" @click="getNewsInfo(item.id)" :class="{ 'last-li': i == newsData[0].page.length - 1 }">
                 <div>
                   <article>
@@ -34,7 +34,7 @@
             </van-list>
           </ul>
 
-          <van-divider :style="{ color: '#969799', borderColor: '#969799' }" v-show="finished">END</van-divider>
+          <van-divider :style="{ color:'#cccccc', borderColor: '#cccccc' }" v-show="finished">END</van-divider>
         </section>
         <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
           <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
@@ -122,6 +122,7 @@ const themeVars = {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+//  color: ; 
 
   //   chrome去除滚动条样式
   &::-webkit-scrollbar {
