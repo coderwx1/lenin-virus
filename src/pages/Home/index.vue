@@ -34,9 +34,9 @@
             </van-list>
           </ul>
 
-          <van-divider :style="{ color:'#cccccc', borderColor: '#cccccc' }" v-show="finished">END</van-divider>
+          <van-divider :style="{ color: '#cccccc', borderColor: '#cccccc' }" v-show="finished">END</van-divider>
         </section>
-        <section class="fixIcon" :class="{ 'is-show': scrollVal >= 500 }">
+        <section class="fixIcon" :class="{ show: scrollVal >= 500 }">
           <a href="javascript:" class="fixTop-ico" @click="scrollTo(0)"></a>
           <a href="javascript:" class="fixBottom-ico" @click="scrollTo(1)"></a>
         </section>
@@ -122,24 +122,19 @@ const themeVars = {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-//  color: ; 
-
   //   chrome去除滚动条样式
   &::-webkit-scrollbar {
     display: none;
   }
-
   //   兼容火狐
   &.scw {
     scrollbar-width: none;
     overflow: -moz-scrollbars-none;
   }
-
   //   兼容IE10+
   &.msscw {
     -ms-overflow-style: none;
   }
-
   .fixIcon {
     position: fixed;
     bottom: 238px;
@@ -147,7 +142,7 @@ const themeVars = {
     z-index: 999;
     display: none;
 
-    &.is-show {
+    &.show {
       display: block;
     }
 
