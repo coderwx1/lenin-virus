@@ -577,31 +577,6 @@
                 }
             },
             "source": "Admin"
-        },
-        {
-            "id": 30,
-            "title": "兰州三岁小孩急需急救，被防疫人员阻挠，未等到救护车最终离世",
-            "small_img": "https://i.postimg.cc/8jhk4Rbs/Snipaste-2022-11-02-07-41-56.png",
-            "date": "2022/11/02",
-            "lastUpdateTime": "2022/11/03",
-            "content": {
-                "other_user": {
-                    "imgUrls": [
-                        "https://i.postimg.cc/c4SqfZL4/QQ-20221103094013.png",
-                        "https://i.postimg.cc/MHfLVPhB/QQ-20221103094026.png",
-                        "https://i.postimg.cc/kgVb8L3h/Snipaste-2022-11-02-07-40-13.png",
-                        "https://i.postimg.cc/k5KRY85Q/Snipaste-2022-11-02-07-41-18.png",
-                        "https://i.postimg.cc/mD4zvDc0/Snipaste-2022-11-02-07-41-32.png",
-                        "https://i.postimg.cc/yYGJVngh/Snipaste-2022-11-02-07-41-56.png",
-                        "https://i.postimg.cc/MTYMqSVX/Snipaste-2022-11-02-07-43-26.png",
-                        "https://i.postimg.cc/brNGvB9g/Snipaste-2022-11-02-07-43-39.png",
-                        "https://i.postimg.cc/9F0R5sMF/Snipaste-2022-11-02-07-43-47.png",
-                        "https://i.postimg.cc/gjSxLHMW/Snipaste-2022-11-02-07-43-58.png" 
-                       
-                    ]
-                }
-            },
-            "source": "Admin"
         }
     ]
 }
