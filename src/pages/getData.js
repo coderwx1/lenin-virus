@@ -31,8 +31,13 @@ export function getAllData(id) {
     }
   })();
   const filterNewsDataById = computed(() => newsData.value.filter((item) => item.id == id.value));
+  // let arr = ref([]);
+  // setTimeout(() => {
+  //   arr.value[0] = 3;
+  // }, 5000);
   return {
     errStatus,
     filterNewsDataById,
+    // arr,
   };
 }

@@ -43,13 +43,58 @@
 </template>
 
 <script setup>
+// watchEffect
+//  reactive, watch
 import { ref } from "vue";
 import { getAllData } from "../getData";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 let id = ref(route.params.id);
-let { filterNewsDataById, errStatus } = getAllData(id);
+
+let { filterNewsDataById, errStatus /*arr*/ } = getAllData(id);
+// arr.value.forEach((item) => {
+//   console.log(item);
+// })
+// console.log(arr);
+
+// watchEffect(() => {
+//   arr.value.forEach((item) => {
+//     console.log(item);
+//   });
+// });
+
+// const state = ref({
+//   name: "zs",
+//   age: 15,
+//   attrObj: {
+//     attr: "efg",
+//   },
+// });
+
+// const state = reactive({
+//   name: "zs",
+//   age: 15,
+//   attrObj: {
+//     attr: "efg",
+//   },
+// });
+
+// watch(
+//   () => JSON.parse(JSON.stringify(state)), //想要获取正确的旧值 需要在监视数据的时候使用深克隆
+//   (newval, oldval) => {
+//     console.log(newval.attrObj.attr);
+//     console.log(oldval.attrObj.attr);
+//   },
+//   {
+//     deep: true,
+//   }
+// );
+
+// setTimeout(() => {
+//   console.log("setTimeout");
+//   state.attrObj.attr = "abc";
+// }, 1000);
 </script>
 
 <style lang="less" scoped>

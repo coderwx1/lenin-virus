@@ -215,7 +215,7 @@
                 },
                 {
                     "id": 30,
-                    "title": "呼和浩特一位母亲跳楼事件",
+                    "title": "呼和浩特一位母亲坠亡",
                     "small_img": "https://i.postimg.cc/R3WRWNxV/QQ-20221105120848.png",
                     "date": "2022/11/05",
                     "source": "Admin"
@@ -225,6 +225,13 @@
                     "title": "兰州三岁儿童一氧化碳中毒身亡事件",
                     "small_img": "https://i.postimg.cc/ThwcFWB7/QQ-20221106171425.png",
                     "date": "2022/11/06",
+                    "source": "Admin"
+                },
+                {
+                    "id": 32,
+                    "title": "医院院长和副院长因不执行疫情防控措施，违规收治病人，均被判刑一年",
+                    "small_img": "https://i.postimg.cc/K19kZjpt/QQ-20221107192027.png",
+                    "date": "2022/11/07",
                     "source": "Admin"
                 }
             ]
